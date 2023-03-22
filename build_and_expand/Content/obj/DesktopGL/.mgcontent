@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Build.wav</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Click.wav</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Error.wav</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Glimmer.mp3</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Poof.wav</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/Music/Bgm.mp3</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/Music/Bgm2.mp3</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/game land.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/game sand unit 1.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/game sand unit A.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/game sand unit L.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Grano.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Grano2.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/house.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Images/worldCapture.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/SplashScreen/SplashScreen.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Srada.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Strada dritta.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/StradaL.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Buildings/house1.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Buildings/logCabin.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Buildings/windMill.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/FX/smoke.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/FX/waterFX.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Natural/grass.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Natural/rock.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Natural/tree.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/Tiles/Natural/waterBase.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/bottomNavBar.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/buttonDemolish.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/buttonHouse.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/buttonLogCabin.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/buttonWindmill.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/calendarIcon.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/cursor.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/cursorHammer.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/food.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/miniStretchButton.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/people.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/stretchButton.png</File>
+    <File>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/wood.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

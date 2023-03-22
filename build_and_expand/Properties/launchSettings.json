@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "build_and_expand": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
