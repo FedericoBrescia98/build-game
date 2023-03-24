@@ -1,9 +1,9 @@
-﻿using System;
-using build_and_expand.Objects;
+﻿using build_and_expand.Objects;
 using build_and_expand.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace build_and_expand.UI
 {
@@ -19,15 +19,20 @@ namespace build_and_expand.UI
         public bool IsHovering { get; private set; }
         public Color PenColor { get; set; }
         public Color HoverColor { get; set; }
-        public Vector2 Position { get; set; }
+        public Point Position { get; set; }
         public Vector2 Scale { get; set; } = new Vector2(1f, 1f);
         public event EventHandler Click;
         public bool IsSelected { get; set; } = false;
         public string Text { get; set; }
         public int ObjectId { get; set; } = 0;
+        public bool HasBubble { get; set; } = false;
+        public TextBubble TextBubble { get; set; }
+        public float DelayBubble { get; set; } = 0.5f;
+        private bool ShowBubble = false;
+        private float BubbleTime = 0;
         public Rectangle Rectangle =>
-                new Rectangle((int)Position.X,
-                (int)Position.Y,
+                new Rectangle(Position.X,
+                Position.Y,
                 (!string.IsNullOrEmpty(Text) ?
                     (((int)_font.MeasureString(Text).X + TextPadding) > _texture.Width ?
                         (int)_font.MeasureString(Text).X + TextPadding
@@ -82,6 +87,10 @@ namespace build_and_expand.UI
                     SpriteEffects.None,
                     1);
             }
+            if(ShowBubble)
+            {
+                TextBubble.Draw(gameTime, spriteBatch);
+            }
         }
 
         public override void Update(GameTime gameTime, GameState gameState)
@@ -101,10 +110,21 @@ namespace build_and_expand.UI
                     Locked = false;
                 }
             }
-            IsHovering = false;
+
             if(mouseRectangle.Intersects(Rectangle))
             {
                 IsHovering = true;
+
+                if(TextBubble != null)
+                {
+                    BubbleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if(BubbleTime >= DelayBubble)
+                    {
+                        BubbleTime = 0;
+                        ShowBubble = true;
+                    }
+                }
+
                 if(_currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
                 {
                     if(Locked == false)
@@ -112,6 +132,11 @@ namespace build_and_expand.UI
                         Click?.Invoke(this, new EventArgs());
                     }
                 }
+            }
+            else
+            {
+                IsHovering = false;
+                ShowBubble = false;
             }
         }
     }

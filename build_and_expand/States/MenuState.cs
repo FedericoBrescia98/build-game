@@ -29,33 +29,33 @@ namespace build_and_expand.States
             // create buttons and set properties, and click event functions
             Button newGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Vector2(0, -220),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, -220),
                 Text = "New Game",
                 HoverColor = Color.Green,
                 Scale = new Vector2(2.5f, 2.5f)
             };
             newGameButton.Click += NewGameButton_Click;
-            newGameButton.Position = newGameButton.Position + new Vector2(-(newGameButton.Rectangle.Width / 2), 0);
+            newGameButton.Position = newGameButton.Position + new Point(-(newGameButton.Rectangle.Width / 2), 0);
 
             Button loadGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Vector2(0, -100),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, -100),
                 Text = "Load Game",
                 HoverColor = Color.CornflowerBlue,
                 Scale = new Vector2(2.5f, 2.5f)
             };
             loadGameButton.Click += LoadGameButton_Click;
-            loadGameButton.Position = loadGameButton.Position + new Vector2(-(loadGameButton.Rectangle.Width / 2), 0);
+            loadGameButton.Position = loadGameButton.Position + new Point(-(loadGameButton.Rectangle.Width / 2), 0);
 
             Button quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Vector2(0, 100),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, 100),
                 Text = "Quit Game",
                 HoverColor = Color.Red,
                 Scale = new Vector2(2.5f, 2.5f)
             };
             quitGameButton.Click += QuitGameButton_Click;
-            quitGameButton.Position = quitGameButton.Position + new Vector2(-(quitGameButton.Rectangle.Width / 2), 0);
+            quitGameButton.Position = quitGameButton.Position + new Point(-(quitGameButton.Rectangle.Width / 2), 0);
 
             #endregion
 

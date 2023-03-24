@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build_and_expand\\build_and_expand\\build_and_expand.csproj": {}
+    "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build-game-2d\\build_and_expand\\build_and_expand.csproj": {}
   },
   "projects": {
-    "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build_and_expand\\build_and_expand\\build_and_expand.csproj": {
+    "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build-game-2d\\build_and_expand\\build_and_expand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build_and_expand\\build_and_expand\\build_and_expand.csproj",
+        "projectUniqueName": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build-game-2d\\build_and_expand\\build_and_expand.csproj",
         "projectName": "build_and_expand",
-        "projectPath": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build_and_expand\\build_and_expand\\build_and_expand.csproj",
+        "projectPath": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build-game-2d\\build_and_expand\\build_and_expand.csproj",
         "packagesPath": "C:\\Users\\Makuta\\.nuget\\packages\\",
-        "outputPath": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build_and_expand\\build_and_expand\\obj\\",
+        "outputPath": "D:\\Archivio\\Federico\\Unige\\Computer graphics and games\\My Games\\Esame 2d\\build-game-2d\\build_and_expand\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Makuta\\AppData\\Roaming\\NuGet\\NuGet.Config",

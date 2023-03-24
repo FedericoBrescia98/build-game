@@ -20,9 +20,11 @@ namespace build_and_expand.UI
         protected List<Component> _components = new List<Component>();
 
         private Texture2D _bottomNavBar;
-        private Rectangle _bottomNavBarRect = new Rectangle(new Point(0, (int)C.DISPLAYDIM.Y - 192), new Point((int)C.DISPLAYDIM.X, 192));
+        private Rectangle _bottomNavBarRect = new Rectangle(new Point(0, (int)C.DISPLAYDIM.Y - 192),
+                                                            new Point((int)C.DISPLAYDIM.X,192));
         private Texture2D _topNavBar;
-        private Rectangle _topNavBarRect = new Rectangle(new Point(0, 0), new Point((int)C.DISPLAYDIM.X, 64));
+        private Rectangle _topNavBarRect = new Rectangle(new Point(0, 0),
+                                                            new Point((int)C.DISPLAYDIM.X, 64));
         private Button _menu;
         private Button _houseBuild;
         private Button _logCabinBuild;
@@ -38,6 +40,7 @@ namespace build_and_expand.UI
             Texture2D windmillButton = content.GetUiTexture(7);
             Texture2D menuButton = content.GetUiTexture(9);
             Texture2D demolishButton = content.GetUiTexture(10);
+            Texture2D textBubble = content.GetUiTexture(13);
             _bottomNavBar = content.GetUiTexture(4);
             _topNavBar = content.GetUiTexture(4);
 
@@ -47,7 +50,7 @@ namespace build_and_expand.UI
             {
                 Scale = new Vector2(2f,2f),
                 Text = "MENU",
-                Position = new Vector2(16, 16)
+                Position = new Point(16, 16)
             };
             _menu.Click += (object sender, EventArgs e) => onMenu();
 
@@ -55,27 +58,43 @@ namespace build_and_expand.UI
             _houseBuild = new Button(houseButton, font)
             {
                 ObjectId = 100,
-                Position = new Vector2(16, _bottomNavBarRect.Y + 16)
+                Position = new Point(16, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Basic House\r\nCost: 25 Wood\r\nOutputs: 4 workers", font)
+                {
+                    Position = new Point(16, _bottomNavBarRect.Y + -96),
+                }
             };
             _houseBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.BasicHouse(); };
 
             _logCabinBuild = new Button(logCabinButton, font)
             {
                 ObjectId = 200,
-                Position = new Vector2(16 + 96, _bottomNavBarRect.Y + 16)
+                Position = new Point(16 + 96, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Log Cabin\r\nCost: 20 Wood, 1 Worker\r\nOutputs per day: 10 wood", font)
+                {
+                    Position = new Point(16 + 96, _bottomNavBarRect.Y + -96),
+                }
             };
             _logCabinBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.LogCabin(); };
 
             _windmillBuild = new Button(windmillButton, font)
             {
                 ObjectId = 500,
-                Position = new Vector2(16 + 192, _bottomNavBarRect.Y + 16)
+                Position = new Point(16 + 192, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Wind Mill\r\nCost: 40 Wood, 1 Worker\r\nOutputs per day: 10 food", font)
+                {
+                    Position = new Point(16 + 192, _bottomNavBarRect.Y + - 96),
+                }
             };
             _windmillBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Windmill(); };
 
             _demolish = new Button(demolishButton, font)
             {
-                Position = new Vector2(_bottomNavBarRect.Width - 64, _bottomNavBarRect.Y + 16)
+                Position = new Point(_bottomNavBarRect.Width - 96, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Destroy buildings", font)
+                {
+                    Position = new Point(_bottomNavBarRect.Width - 156, _bottomNavBarRect.Y + -96),
+                }
             };
             _demolish.Click += (object sender, EventArgs e) => { GameState.DeleteBuildingButtonClick(); };
 

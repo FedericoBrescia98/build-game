@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sounds/FX/Error.wav</SourceFile>
+  <SourceFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build-game-2d/build_and_expand/Content/Sounds/FX/Error.wav</SourceFile>
   <SourceTime>2016-01-26T00:53:54+01:00</SourceTime>
-  <DestFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/bin/DesktopGL/Content/Sounds/FX/Error.xnb</DestFile>
-  <DestTime>2023-03-20T10:57:20.4294188+01:00</DestTime>
+  <DestFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build-game-2d/build_and_expand/Content/bin/DesktopGL/Content/Sounds/FX/Error.xnb</DestFile>
+  <DestTime>2023-03-23T11:29:13.7078132+01:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

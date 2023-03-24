@@ -56,7 +56,7 @@ namespace build_and_expand.Objects
             PositionToMap = new Point(position.X / C.TILETEXTURESIZE.X, position.Y / C.TILETEXTURESIZE.Y);
             PreviousMouseState = Mouse.GetState();
             TerrainId = Object.TerrainId;
-            if(Object.ObjectId >= 100)
+            if(Object.ObjectId >= 1)
             {
                 DestructionFX = new AnimatedTexture(Content.GetTileTexture(-2), Position);
             }

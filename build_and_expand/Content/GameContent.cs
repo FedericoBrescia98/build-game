@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace build_and_expand.Content
 {
@@ -76,29 +72,29 @@ namespace build_and_expand.Content
         public Texture2D GetUiTexture(int id)
         {
             return (from a in UiTextures
-                where a.Id.Equals(id)
-                select a.Data).SingleOrDefault<Texture2D>();
+                    where a.Id.Equals(id)
+                    select a.Data).SingleOrDefault<Texture2D>();
         }
 
         public SpriteFont GetFont(int id)
         {
             return (from a in Fonts
-                where a.Id.Equals(id)
-                select a.Data).SingleOrDefault<SpriteFont>();
+                    where a.Id.Equals(id)
+                    select a.Data).SingleOrDefault<SpriteFont>();
         }
 
         public Texture2D GetTileTexture(int id)
         {
             return (from a in TileTextures
-                where a.Id.Equals(id)
-                select a.Data).SingleOrDefault<Texture2D>();
+                    where a.Id.Equals(id)
+                    select a.Data).SingleOrDefault<Texture2D>();
         }
 
         public SoundEffect GetSoundEffect(int id)
         {
             return (from a in SoundEffects
-                where a.Id.Equals(id)
-                select a.Data).SingleOrDefault<SoundEffect>();
+                    where a.Id.Equals(id)
+                    select a.Data).SingleOrDefault<SoundEffect>();
         }
 
         // loads all textures within the game
@@ -127,6 +123,8 @@ namespace build_and_expand.Content
             UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonDemolish", _content)); // 10
             UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursor", _content)); // 11
             UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursorHammer", _content)); // 12
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/textBubble", _content)); // 13
+
         }
 
         public void LoadFonts()

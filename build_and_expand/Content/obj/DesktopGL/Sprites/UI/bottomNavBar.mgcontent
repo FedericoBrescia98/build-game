@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/Sprites/UI/bottomNavBar.png</SourceFile>
+  <SourceFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build-game-2d/build_and_expand/Content/Sprites/UI/bottomNavBar.png</SourceFile>
   <SourceTime>2023-01-09T22:19:42.4392723+01:00</SourceTime>
-  <DestFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build_and_expand/build_and_expand/Content/bin/DesktopGL/Sprites/UI/bottomNavBar.xnb</DestFile>
-  <DestTime>2023-03-22T16:54:19.4372331+01:00</DestTime>
+  <DestFile>D:/Archivio/Federico/Unige/Computer graphics and games/My Games/Esame 2d/build-game-2d/build_and_expand/Content/bin/DesktopGL/Sprites/UI/bottomNavBar.xnb</DestFile>
+  <DestTime>2023-03-24T12:55:35.0210719+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
