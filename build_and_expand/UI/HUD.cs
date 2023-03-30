@@ -29,20 +29,27 @@ namespace build_and_expand.UI
         private Button _houseBuild;
         private Button _logCabinBuild;
         private Button _windmillBuild;
+        private Button _farmBuild;
+        private Button _quarryBuild;
+        private Button _roadBuild;
         private Button _demolish;
+
         private Inventory _inventory;
         private Calendar _calendar;
 
         public HUD(GameContent content, Action onMenu)
         {
-            Texture2D houseButton = content.GetUiTexture(5);
-            Texture2D logCabinButton = content.GetUiTexture(6);
-            Texture2D windmillButton = content.GetUiTexture(7);
-            Texture2D menuButton = content.GetUiTexture(9);
-            Texture2D demolishButton = content.GetUiTexture(10);
-            Texture2D textBubble = content.GetUiTexture(13);
-            _bottomNavBar = content.GetUiTexture(4);
-            _topNavBar = content.GetUiTexture(4);
+            Texture2D houseButton = content.GetUiTexture(6);
+            Texture2D logCabinButton = content.GetUiTexture(7);
+            Texture2D windmillButton = content.GetUiTexture(8);
+            Texture2D farmButton = content.GetUiTexture(16);
+            Texture2D quarryButton = content.GetUiTexture(17);
+            Texture2D roadButton = content.GetUiTexture(18);
+            Texture2D menuButton = content.GetUiTexture(10);
+            Texture2D demolishButton = content.GetUiTexture(11);
+            Texture2D textBubble = content.GetUiTexture(14);
+            _bottomNavBar = content.GetUiTexture(5);
+            _topNavBar = content.GetUiTexture(5);
 
             SpriteFont font = content.GetFont(1);
 
@@ -59,7 +66,7 @@ namespace build_and_expand.UI
             {
                 ObjectId = 100,
                 Position = new Point(16, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Basic House\r\nCost: 25 Wood\r\nOutputs: 4 workers", font)
+                TextBubble = new TextBubble(textBubble, "Basic House\r\nCost: 25 Wood\r\nOutputs: 4 Workers", font)
                 {
                     Position = new Point(16, _bottomNavBarRect.Y + -96),
                 }
@@ -70,23 +77,56 @@ namespace build_and_expand.UI
             {
                 ObjectId = 200,
                 Position = new Point(16 + 96, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Log Cabin\r\nCost: 20 Wood, 1 Worker\r\nOutputs per day: 10 wood", font)
+                TextBubble = new TextBubble(textBubble, "Log Cabin\r\nCost: 20 Wood, 1 Worker\r\nOutputs per day: 10 Wood", font)
                 {
                     Position = new Point(16 + 96, _bottomNavBarRect.Y + -96),
                 }
             };
             _logCabinBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.LogCabin(); };
 
-            _windmillBuild = new Button(windmillButton, font)
+            _farmBuild = new Button(farmButton, font)
             {
-                ObjectId = 500,
+                ObjectId = 300,
                 Position = new Point(16 + 192, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Wind Mill\r\nCost: 40 Wood, 1 Worker\r\nOutputs per day: 10 food", font)
+                TextBubble = new TextBubble(textBubble, "Farm\r\nCost: 25 Wood, 1 Worker\r\nOutputs per day: 10 Food", font)
                 {
                     Position = new Point(16 + 192, _bottomNavBarRect.Y + - 96),
                 }
             };
+            _farmBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Farm(); };
+
+            _quarryBuild = new Button(quarryButton, font)
+            {
+                ObjectId = 400,
+                Position = new Point(16 + 288, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Quarry\r\nCost: 50 Wood, 2 Worker\r\nOutputs per day: 10 Stone", font)
+                {
+                    Position = new Point(16 + 288, _bottomNavBarRect.Y + -96),
+                }
+            };
+            _quarryBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Quarry(); };
+
+            _windmillBuild = new Button(windmillButton, font)
+            {
+                ObjectId = 500,
+                Position = new Point(16 + 384, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Wind Mill\r\nCost: 40 Wood, 1 Worker\r\nOutputs per day: 10 Food", font)
+                {
+                    Position = new Point(16 + 384, _bottomNavBarRect.Y + -96),
+                }
+            };
             _windmillBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Windmill(); };
+
+            _roadBuild = new Button(roadButton, font)
+            {
+                ObjectId = 1000,
+                Position = new Point(16 + 480, _bottomNavBarRect.Y + 16),
+                TextBubble = new TextBubble(textBubble, "Road\r\nCost: 10 Stone\r\n", font)
+                {
+                    Position = new Point(16 + 480, _bottomNavBarRect.Y + -96),
+                }
+            };
+            _roadBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Road(); };
 
             _demolish = new Button(demolishButton, font)
             {
@@ -107,7 +147,10 @@ namespace build_and_expand.UI
                 _menu,
                 _houseBuild,
                 _logCabinBuild,
+                _farmBuild,
+                _quarryBuild,
                 _windmillBuild,
+                _roadBuild,
                 _inventory,
                 _demolish,
                 _calendar

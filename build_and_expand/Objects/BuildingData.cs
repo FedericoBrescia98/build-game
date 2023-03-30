@@ -16,10 +16,10 @@ namespace build_and_expand.Objects
             {300, Building.Farm()},
             {400, Building.Quarry()},
             {500, Building.Windmill()},
-            {600, Building.TownHall()},
-            {999, Building.Road()}
+            {1000, Building.Road()}
         };
 
+        // for future range and location for buildings
         public static Dictionary<int, List<int>> Dict_BuildingResourceLink => new Dictionary<int, List<int>>()
         {
             {100, new List<int>() {0}},
@@ -28,14 +28,7 @@ namespace build_and_expand.Objects
             {400, new List<int>() {4, 5, 6}}, // quarry  -> ore(s)
             {500, new List < int >() {0}},
             {600, new List < int >() {0}},
-            {999, new List < int >() {0}}
-        };
-
-        public static Dictionary<int, string> Dic_ResourceNameKeys => new Dictionary<int, string>()
-        {            
-            {1, "Food"},
-            {2, "Wood"},
-            {3, "Workers"},
+            {1000, new List < int >() {0}}
         };
     }
 }

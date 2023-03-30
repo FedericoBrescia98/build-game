@@ -8,12 +8,10 @@ namespace build_and_expand.UI
 {
     public class TextBubble : Component
     {
-        private Texture2D _texture { get; set; }
+        private Texture2D _texture;
         private readonly SpriteFont _font;
-        private Color PenColor = Color.Black;
+        public Color PenColor { get; set; } = Color.Black;
 
-        public float BubbleDelay { get; set; } = 4000;
-        private float _bubbleTime;
         public Point Position { get; set; }
         public Vector2 Scale { get; set; } = new Vector2(1f, 1f);
         public int TextPadding = 4;
@@ -31,7 +29,6 @@ namespace build_and_expand.UI
         {
             _text = text;
             _font = font;
-            _bubbleTime = BubbleDelay;
             _texture = texture;
         }
 

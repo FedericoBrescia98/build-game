@@ -20,7 +20,7 @@ namespace build_and_expand.UI
         public Calendar(GameContent gameContent)
         {
             _content = gameContent;
-            _icon = gameContent.GetUiTexture(8);
+            _icon = gameContent.GetUiTexture(9);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

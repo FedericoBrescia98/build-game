@@ -3,8 +3,6 @@ using build_and_expand.States;
 using build_and_expand.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -14,7 +12,7 @@ namespace build_and_expand.Objects
     {
         public GameContent GameContent { get; set; }
         public Grid grid = new Grid((int)C.MAPDIM.X, (int)C.MAPDIM.Y);
-        private readonly string[] _linesMap = File.ReadAllLines("../../../Content/defaultMap.txt");
+        private readonly string[] _linesMap = File.ReadAllLines("defaultMap.txt");
         private List<AnimatedTexture> _waterAnimation = new List<AnimatedTexture>();
         public Map(GameContent gameContent)
         {
@@ -100,6 +98,7 @@ namespace build_and_expand.Objects
             {
                 for(int j = 0; j < grid.Height; j++)
                 {
+                    SetRoadTexture(grid[i, j].Object, grid[i, j].PositionToMap);
                     grid[i, j].Draw(gameTime, spriteBatch);
                 }
             }
@@ -112,6 +111,90 @@ namespace build_and_expand.Objects
                 for(int j = 0; j < grid.Height; j++)
                 {
                     grid[i, j].Update(gameTime, gameState);
+                }
+            }
+        }
+
+        // logics for roads turns texture
+        public void SetRoadTexture(TileObject obj, Point tp)
+        {
+            if(obj.ObjectId == 1000)
+            {
+                obj.TerrainId = 1000;
+                if(tp.X != 0 && grid[tp.X - 1, tp.Y].Object.ObjectId == 1000)
+                {
+                    obj.TerrainId = 1000;
+                    if(tp.Y != 0 && grid[tp.X, tp.Y - 1].Object.ObjectId == 1000)
+                    {
+                        obj.TerrainId = 1005;
+                        if(tp.X != C.MAPDIM.X - 1 && grid[tp.X + 1, tp.Y].Object.ObjectId == 1000)
+                        {
+                            obj.TerrainId = 1006;
+                            if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                            {
+                                obj.TerrainId = 1010;
+                                return;
+                            }
+                            return;
+                        }
+                        if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                        {
+                            obj.TerrainId = 1009;
+                            return;
+                        }
+                        return;
+                    }
+                    if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                    {
+                        obj.TerrainId = 1004;
+                        if(tp.X != C.MAPDIM.X - 1 && grid[tp.X + 1, tp.Y].Object.ObjectId == 1000)
+                        {
+                            obj.TerrainId = 1008;
+                            return;
+                        }
+                        return;
+                    }
+                    return;
+                }
+                if(tp.Y != 0 && grid[tp.X, tp.Y - 1].Object.ObjectId == 1000)
+                {
+                    obj.TerrainId = 1001;
+                    if(tp.X != C.MAPDIM.X - 1 && grid[tp.X + 1, tp.Y].Object.ObjectId == 1000)
+                    {
+                        obj.TerrainId = 1002;
+                        if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                        {
+                            obj.TerrainId = 1007;
+                            return;
+                        }
+                        return;
+                    }
+                    return;
+                }
+                if(tp.X != C.MAPDIM.X - 1 && grid[tp.X + 1, tp.Y].Object.ObjectId == 1000)
+                {
+                    obj.TerrainId = 1000;
+                    if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                    {
+                        obj.TerrainId = 1003;
+                        return;
+                    }
+                    return;
+                }
+                if(tp.Y != C.MAPDIM.Y - 1 && grid[tp.X, tp.Y + 1].Object.ObjectId == 1000)
+                {
+                    obj.TerrainId = 1001;
+                    if(tp.X != 0 && grid[tp.X - 1, tp.Y].Object.ObjectId == 1000)
+                    {
+                        obj.TerrainId = 1004;
+                        if(tp.Y != 0 && grid[tp.X, tp.Y - 1].Object.ObjectId == 1000)
+                        {
+                            obj.TerrainId = 1009;
+                            return;
+                        }
+                        return;
+                    }
+                    return;
                 }
             }
         }

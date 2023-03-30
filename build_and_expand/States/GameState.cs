@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -79,6 +78,7 @@ namespace build_and_expand.States
         public HUD GameHUD { get; set; }
         public TileObject SelectedObject { get; set; }
         public Tile CurrentlyHoveredTile { get; set; }
+        public List<TileBubble> TileBubbles { get; set; } = new List<TileBubble>();
         #endregion
 
         #endregion
@@ -196,7 +196,11 @@ namespace build_and_expand.States
                     _currentMap = new Map(GameContent);
                     foreach(Tile tile in loadedGameStateData.MapTiles)
                     {
-                        _currentMap.grid[tile.PositionToMap.X, tile.PositionToMap.Y] = new Tile(GameContent, tile.Object, tile.Position);
+                        Point tp = tile.PositionToMap;
+                        _currentMap.grid[tp.X, tp.Y] = new Tile(GameContent, tile.Object, tile.Position);
+                        _currentMap.grid[tp.X, tp.Y].Click += TileOnClick;
+                        _currentMap.grid[tp.X, tp.Y].Pressed += TileOnPressed;
+                        _currentMap.grid[tp.X, tp.Y].Pressing += TileCurrentlyPressed;
                     }
 
                     LoadingText = $"Putting things back together...";
@@ -280,23 +284,43 @@ namespace build_and_expand.States
 
         public void ProcessBuildings()
         {
+            TileBubbles = new List<TileBubble>();
             foreach(Tile tile in _currentMap.grid.GridTiles)
             {
                 // if the object ID is greater than 100 (is a building)
                 if(tile.Object.ObjectId >= 100)
                 {
+                    SpriteFont font = GameContent.GetFont(1);
+                    string text = "";
+                    TileObject tileObject = tile.Object;
+
+                    text = tileObject.FoodCycleOutput != 0 ? text + "+" + tileObject.FoodCycleOutput.ToString() + " food" : text;
+                    //text = tileObject.IronCycleOutput != 0 ? text + "+" + tileObject.IronCycleOutput.ToString() + " iron" : text;
+                    //text = tileObject.GoldCycleOutput != 0 ? text + "+" + tileObject.GoldCycleOutput.ToString() + " gold" : text;
+                    text = tileObject.StoneCycleOutput != 0 ? text + "+" + tileObject.StoneCycleOutput.ToString() + " stone" : text;
+                    text = tileObject.WoodCycleOutput != 0 ? text + "+" + tileObject.WoodCycleOutput.ToString() + " wood" : text;
+                    text = tileObject.WorkersCycleOutput != 0 ? text + "+" + tileObject.WorkersCycleOutput.ToString() + " workers" : text;
+
+                    if(text != "")
+                    {
+                        TileBubble bubble = new TileBubble(GameContent, text, font)
+                        {
+                            Position = new Point(tile.Position.X, tile.Position.Y - 16),
+                        };
+                        TileBubbles.Add(bubble);
+                    }
                     GameStateData.PlayerInventory.AddObjectCycleOutputs(tile.Object);
                 }
             }
 
             // subtract from food the amount of food per worker in total buildings
-            GameStateData.PlayerInventory.Food -= (2 * GameStateData.PlayerInventory.Workers);
+            GameStateData.PlayerInventory.Food -= (2 * GameStateData.PlayerInventory.TotalWorkers);
         }
 
         /// <summary>
         /// Asynchronous method to save the game in it's current state
         /// Loops through all tiles and saves their respective TILEDATA
-        /// Compiles all the necessarry data for the GameStateData
+        /// Compiles all the necessary data for the GameStateData
         /// Deletes the previous backup, saves current save as a new backup, and saves the current gamestate data as a savefile
         /// </summary>
         public void SaveGame()
@@ -418,7 +442,7 @@ namespace build_and_expand.States
         {
             if(CurrentlySelectedTile is null)
             {
-                CursorTexture = GameContent.GetUiTexture(12);
+                CursorTexture = GameContent.GetUiTexture(13);
 
                 foreach(Tile t in _currentMap.grid.GridTiles)
                 {
@@ -468,7 +492,7 @@ namespace build_and_expand.States
 
             if(MouseState.RightButton == ButtonState.Released && _previousMouseState.RightButton == ButtonState.Pressed)
             {
-                CursorTexture = GameContent.GetUiTexture(11);
+                CursorTexture = GameContent.GetUiTexture(12);
 
                 SelectedObject = null;
                 foreach(Tile t in _currentMap.grid.GridTiles)
@@ -503,6 +527,10 @@ namespace build_and_expand.States
                 try
                 {
                     _currentMap.Draw(gameTime, spriteBatch);
+                    foreach(TileBubble bubble in TileBubbles)
+                    {
+                        bubble.Draw(gameTime, spriteBatch);
+                    }
                 }
                 catch(Exception e)
                 {

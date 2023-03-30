@@ -32,7 +32,7 @@ namespace build_and_expand.Objects
             WorkersStaticOutput = staticOutputs[4];
             FoodStaticOutput = staticOutputs[5];
 
-            // set constuction costs
+            // set construction costs
             GoldCost = costs[0];
             WoodCost = costs[1];
             IronCost = costs[2];
@@ -266,57 +266,11 @@ namespace build_and_expand.Objects
             };
         }
 
-        // construct a town hall
-        public static Building TownHall()
-        {
-            List<float> settings = new List<float>()
-            {
-                600,
-            };
-
-            // set costs
-            List<int> costs = new List<int>()
-            {
-                200, // gold
-                200, // wood
-                0, // iron
-                0, // stone
-                2, // workers
-                0 // food
-            };
-
-            List<int> cycleOutputs = new List<int>()
-            {
-                10, // gold
-                0, // wood
-                0, // iron
-                0, // stone
-                0, // workers
-                0, // food
-            };
-
-            List<int> staticOutputs = new List<int>()
-            {
-                0, // gold
-                0, // wood
-                0, // iron
-                0, // stone
-                0, // workers
-                0, // food
-            };
-
-            return new Building(settings, costs, cycleOutputs, staticOutputs)
-            {
-                Name = "Town Hall",
-                RequiresRoad = true
-            };
-        }
-
         public static Building Road()
         {
             List<float> settings = new List<float>()
             {
-                999,
+                1000,
             };
 
             // set costs

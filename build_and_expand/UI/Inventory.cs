@@ -3,8 +3,8 @@ using build_and_expand.States;
 using build_and_expand.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace build_and_expand.Objects
 {
@@ -27,15 +27,18 @@ namespace build_and_expand.Objects
             {
                 {1, _inventoryData.Food},
                 {2, _inventoryData.Wood},
-                {3, _inventoryData.Workers},
+                {3, _inventoryData.Stone},
+                {4, _inventoryData.FreeWorkers},
+                {5, _inventoryData.TotalWorkers},
             };
-            for(int i = 1; i < 4; i++)
+            for(int i = 1; i < 5; i++)
             {
-                Point position = new Point(i * 156 + 16, 16);
+                Point position = new Point(164 + (i - 1) * 90, 16);
                 Texture = _content.GetUiTexture(i);
                 spriteBatch.Draw(Texture, new Rectangle(new Point(position.X, position.Y), C.TILETEXTURESIZE), color: Color.White);
                 Fonts = _content.GetFont(1);
-                spriteBatch.DrawString(Fonts, invIndx[i].ToString(), new Vector2(i * 156 + 64, 24), Color.White);
+                string text = i == 4 ? invIndx[i].ToString() + "/" + invIndx[5].ToString() : invIndx[i].ToString();
+                spriteBatch.DrawString(Fonts, text, new Vector2(200 + (i - 1) * 90, 24), Color.White);
             }
         }
 

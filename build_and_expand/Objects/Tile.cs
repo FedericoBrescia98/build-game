@@ -20,9 +20,6 @@ namespace build_and_expand.Objects
         private MouseState PreviousMouseState { get; set; }
         [JsonIgnore] private Texture2D Texture { get; set; }
 
-        // the type of terrain on this tile (0 = Grass, 1 = Dirt, 2 = Water)
-        public int TerrainId { get; set; }
-
         // hitbox for mouse touch
         public Rectangle TouchHitbox
         {
@@ -55,8 +52,7 @@ namespace build_and_expand.Objects
             Position = position;
             PositionToMap = new Point(position.X / C.TILETEXTURESIZE.X, position.Y / C.TILETEXTURESIZE.Y);
             PreviousMouseState = Mouse.GetState();
-            TerrainId = Object.TerrainId;
-            if(Object.ObjectId >= 1)
+            if(Object.ObjectId >= 1 && content != null)
             {
                 DestructionFX = new AnimatedTexture(Content.GetTileTexture(-2), Position);
             }
@@ -138,19 +134,32 @@ namespace build_and_expand.Objects
                 DrawColor = Color.White;
             }
 
-            if(Object.ObjectId > 1)
+            if(Object.ObjectId == 1000)
             {
-                // draw base texture
-                Texture = Content.GetTileTexture(TerrainId);
+                Texture = Content.GetTileTexture(1);
+                spriteBatch.Draw(Texture, destinationRectangle:
+                                            new Rectangle(new Point(Position.X, Position.Y),
+                                            C.TILETEXTURESIZE), color: DrawColor);
+                Texture = Content.GetTileTexture(Object.TerrainId);
                 spriteBatch.Draw(Texture, destinationRectangle:
                                             new Rectangle(new Point(Position.X, Position.Y),
                                             C.TILETEXTURESIZE), color: DrawColor);
             }
-            Texture = Content.GetTileTexture(Object.ObjectId);
-            spriteBatch.Draw(Texture, destinationRectangle:
-                                            new Rectangle(new Point(Position.X, Position.Y),
-                                            C.TILETEXTURESIZE), color: DrawColor);
-
+            else
+            {
+                if(Object.ObjectId > 1)
+                {
+                    // draw base texture
+                    Texture = Content.GetTileTexture(Object.TerrainId);
+                    spriteBatch.Draw(Texture, destinationRectangle:
+                                                new Rectangle(new Point(Position.X, Position.Y),
+                                                C.TILETEXTURESIZE), color: DrawColor);
+                }
+                Texture = Content.GetTileTexture(Object.ObjectId);
+                spriteBatch.Draw(Texture, destinationRectangle:
+                                             new Rectangle(new Point(Position.X, Position.Y),
+                                             C.TILETEXTURESIZE), color: DrawColor);
+            }
             // draw animation
             if(HasAnimatedTexture)
             {

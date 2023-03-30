@@ -138,9 +138,6 @@ D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-g
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\game sand unit 1.xnb
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\game sand unit A.xnb
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\game sand unit L.xnb
-D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Grano.xnb
-D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Grano2.xnb
-D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\house.xnb
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Images\worldCapture.xnb
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\SplashScreen\SplashScreen.xnb
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Srada.xnb
@@ -195,3 +192,24 @@ D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-g
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\obj\Debug\net6.0\build_and_expand.genruntimeconfig.cache
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\obj\Debug\net6.0\ref\build_and_expand.dll
 D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\textBubble.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\tileBubble.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\farm.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\lroad.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\quarry.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\road.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\xroad.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\buttonFarm.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\buttonQuarry.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\buttonRoad.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\UI\stone.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\defaultMap.txt
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\lroad1.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\lroad2.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\lroad3.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\lroad4.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\road1.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\road2.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\troad1.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\troad2.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\troad3.xnb
+D:\Archivio\Federico\Unige\Computer graphics and games\My Games\Esame 2d\build-game-2d\build_and_expand\bin\Debug\net6.0\Content\Sprites\Tiles\Buildings\troad4.xnb

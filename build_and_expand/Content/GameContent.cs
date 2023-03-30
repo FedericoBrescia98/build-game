@@ -113,17 +113,22 @@ namespace build_and_expand.Content
             int i = 1;
             UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/food", _content)); // 1
             UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/wood", _content)); // 2
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/people", _content)); // 3
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/bottomNavBar", _content)); // 4
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonHouse", _content)); // 5
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonLogCabin", _content)); // 6
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonWindmill", _content)); // 7
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/calendarIcon", _content)); // 8
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/miniStretchButton", _content)); // 9
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonDemolish", _content)); // 10
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursor", _content)); // 11
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursorHammer", _content)); // 12
-            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/textBubble", _content)); // 13
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/stone", _content)); // 3
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/people", _content)); // 4
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/bottomNavBar", _content)); // 5
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonHouse", _content)); // 6
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonLogCabin", _content)); // 7
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonWindmill", _content)); // 8
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/calendarIcon", _content)); // 9
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/miniStretchButton", _content)); // 10
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonDemolish", _content)); // 11
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursor", _content)); // 12
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/cursorHammer", _content)); // 13
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/textBubble", _content)); // 14
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/tileBubble", _content)); // 15
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonFarm", _content)); // 16
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonQuarry", _content)); // 17
+            UiTextures.Add(new ContentData<Texture2D>(i++, "Sprites/UI/buttonRoad", _content)); // 18
 
         }
 
@@ -149,9 +154,25 @@ namespace build_and_expand.Content
             TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/house1", _content)); // 100
             i = 200;
             TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/logCabin", _content)); // 200
-
+            i = 300;
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/farm", _content)); // 300
+            i = 400;
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/quarry", _content)); // 400
             i = 500;
             TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/windMill", _content)); // 500
+
+            i = 1000;
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/road1", _content)); // 1000
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/road2", _content)); // 1001
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/lroad1", _content)); // 1002
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/lroad2", _content)); // 1003
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/lroad3", _content)); // 1004
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/lroad4", _content)); // 1005
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/troad1", _content)); // 1006
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/troad2", _content)); // 1007
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/troad3", _content)); // 1008
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/troad4", _content)); // 1009
+            TileTextures.Add(new ContentData<Texture2D>(i++, "Sprites/Tiles/Buildings/xroad", _content)); // 1010
         }
 
         public void LoadSoundEffects()
@@ -161,8 +182,6 @@ namespace build_and_expand.Content
             SoundEffectsList.Add(new ContentData<SoundEffect>(i++, "Sounds/FX/Error", _content)); // 2
             SoundEffectsList.Add(new ContentData<SoundEffect>(i++, "Sounds/FX/Click", _content)); // 3
             SoundEffectsList.Add(new ContentData<SoundEffect>(i++, "Sounds/FX/Poof", _content)); // 4        
-            //SoundEffectsList.Add(new ContentData<SoundEffect>(i++, "Sounds/FX/Glimmer", _content)); // 5
-
         }
     }
 

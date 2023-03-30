@@ -27,10 +27,15 @@ namespace build_and_expand.Objects
             get => _stone;
             set { _stone = value > ResourceMax ? ResourceMax : value; }
         }
-        public int Workers
+        public int FreeWorkers
         {
-            get => _workers;
-            set { _workers = value > ResourceMax ? ResourceMax : value; }
+            get => _freeWorkers;
+            set { _freeWorkers = value > ResourceMax ? ResourceMax : value; }
+        }
+        public int TotalWorkers
+        {
+            get => _totalWorkers;
+            set { _totalWorkers = value > ResourceMax ? ResourceMax : value; }
         }
         public int Food
         {
@@ -42,7 +47,8 @@ namespace build_and_expand.Objects
         [JsonIgnore] private int _wood;
         [JsonIgnore] private int _iron;
         [JsonIgnore] private int _stone;
-        [JsonIgnore] private int _workers;
+        [JsonIgnore] private int _freeWorkers;
+        [JsonIgnore] private int _totalWorkers;
         [JsonIgnore] private int _food;
 
         public InventoryData()
@@ -53,10 +59,11 @@ namespace build_and_expand.Objects
         public void ResetInventoryToBase()
         {
             Gold = 10;
-            Wood = 50;
+            Wood = 60;
             Iron = 0;
             Stone = 0;
-            Workers = 4;
+            FreeWorkers = 4;
+            TotalWorkers = 4;
             Food = 100;
         }
 
@@ -97,7 +104,7 @@ namespace build_and_expand.Objects
                         Iron -= amount_requested;
                         return true;
                     case "workers":
-                        Workers -= amount_requested;
+                        FreeWorkers -= amount_requested;
                         return true;
                     case "food":
                         Food -= amount_requested;
@@ -174,7 +181,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "workers":
-                        if(amount_requested <= Workers)
+                        if(amount_requested <= FreeWorkers)
                         {
                             return true;
                         }
@@ -207,7 +214,7 @@ namespace build_and_expand.Objects
             Gold += tileObject.GoldCycleOutput;
             Wood += tileObject.WoodCycleOutput;
             Iron += tileObject.IronCycleOutput;
-            Workers += tileObject.WorkersCycleOutput;
+            FreeWorkers += tileObject.WorkersCycleOutput;
             Food += tileObject.FoodCycleOutput;
             Stone += tileObject.StoneCycleOutput;
         }
@@ -229,7 +236,7 @@ namespace build_and_expand.Objects
             Gold -= tileObject.GoldCost;
             Wood -= tileObject.WoodCost;
             Iron -= tileObject.IronCost;
-            Workers -= tileObject.WorkersCost;
+            FreeWorkers -= tileObject.WorkersCost;
             Food -= tileObject.FoodCost;
             Stone -= tileObject.StoneCost;
         }
@@ -239,7 +246,8 @@ namespace build_and_expand.Objects
             Gold += tileObject.GoldStaticOutput;
             Wood += tileObject.WoodStaticOutput;
             Iron += tileObject.IronStaticOutput;
-            Workers += tileObject.WorkersStaticOutput;
+            FreeWorkers += tileObject.WorkersStaticOutput;
+            TotalWorkers += tileObject.WorkersStaticOutput;
             Food += tileObject.FoodStaticOutput;
             Stone += tileObject.StoneStaticOutput;
         }
@@ -251,7 +259,9 @@ namespace build_and_expand.Objects
             Iron += (tileObject.IronCost / 2);
             Stone += (tileObject.StoneCost / 2);
             Food += (tileObject.FoodCost / 2);
-            Workers += (tileObject.WorkersCost);
+            FreeWorkers += (tileObject.WorkersCost);
+            FreeWorkers -= (tileObject.WorkersStaticOutput);
+            TotalWorkers -= (tileObject.WorkersStaticOutput);
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using build_and_expand.Content;
-using build_and_expand.States;
+﻿using build_and_expand.States;
 using build_and_expand.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Drawing;
+using Microsoft.Xna.Framework.Media;
 using System.Threading.Tasks;
 using Color = Microsoft.Xna.Framework.Color;
 using Point = Microsoft.Xna.Framework.Point;
@@ -36,14 +35,14 @@ namespace build_and_expand
 
         protected override void Initialize()
         {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _currentState = new SplashScreenState(this, GraphicsDevice, Content);
+            fpsCounter = new FPS_Counter();
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _currentState = new SplashScreenState(this, GraphicsDevice, Content);
-            fpsCounter = new FPS_Counter();
             fpsCounter.LoadContent(Content);
             ClickSound = Content.Load<SoundEffect>("Sounds/FX/Click");
         }
@@ -64,9 +63,16 @@ namespace build_and_expand
                     {
                         bool makeSound = true;
                         if(_currentState is GameState s)
-                        { if(!s.IsLoaded) makeSound = false; }
+                        {
+                            if(!s.IsLoaded)
+                            {
+                                makeSound = false;
+                            }
+                        }
                         if(makeSound.Equals(true))
+                        {
                             ClickSound.Play(0.2f, -0.3f, 0.0f);
+                        }
                     }
                 }
 
@@ -76,7 +82,10 @@ namespace build_and_expand
                     if(Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
                         if(_currentState is GameState state)
+                        {
                             Task.Run(() => state.SaveGame());
+                        }
+
                         _nextState = new MenuState(this, GraphicsDevice, Content);
                     }
                 }
