@@ -27,7 +27,7 @@ namespace build_and_expand.UI
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _totalTime += elapsed;
 
-            if(_totalTime >= 1000)
+            if (_totalTime >= 1000)
             {
                 _displayFPS = _fps;
                 _fps = 0;

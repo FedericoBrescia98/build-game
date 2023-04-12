@@ -20,11 +20,15 @@ namespace build_and_expand.UI
         protected List<Component> _components = new List<Component>();
 
         private Texture2D _bottomNavBar;
+
         private Rectangle _bottomNavBarRect = new Rectangle(new Point(0, (int)C.DISPLAYDIM.Y - 192),
-                                                            new Point((int)C.DISPLAYDIM.X,192));
+            new Point((int)C.DISPLAYDIM.X, 192));
+
         private Texture2D _topNavBar;
+
         private Rectangle _topNavBarRect = new Rectangle(new Point(0, 0),
-                                                            new Point((int)C.DISPLAYDIM.X, 64));
+            new Point((int)C.DISPLAYDIM.X, 64));
+
         private Button _menu;
         private Button _houseBuild;
         private Button _logCabinBuild;
@@ -55,7 +59,7 @@ namespace build_and_expand.UI
 
             _menu = new Button(menuButton, font)
             {
-                Scale = new Vector2(2f,2f),
+                Scale = new Vector2(2f, 2f),
                 Text = "MENU",
                 Position = new Point(16, 16)
             };
@@ -77,7 +81,8 @@ namespace build_and_expand.UI
             {
                 ObjectId = 200,
                 Position = new Point(16 + 96, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Log Cabin\r\nCost: 20 Wood, 1 Worker\r\nOutputs per day: 10 Wood", font)
+                TextBubble = new TextBubble(textBubble,
+                    "Log Cabin\r\nCost: 20 Wood, 1 Worker\r\nOutputs per day: 10 Wood", font)
                 {
                     Position = new Point(16 + 96, _bottomNavBarRect.Y + -96),
                 }
@@ -88,9 +93,10 @@ namespace build_and_expand.UI
             {
                 ObjectId = 300,
                 Position = new Point(16 + 192, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Farm\r\nCost: 25 Wood, 1 Worker\r\nOutputs per day: 10 Food", font)
+                TextBubble = new TextBubble(textBubble, "Farm\r\nCost: 25 Wood, 1 Worker\r\nOutputs per day: 10 Food",
+                    font)
                 {
-                    Position = new Point(16 + 192, _bottomNavBarRect.Y + - 96),
+                    Position = new Point(16 + 192, _bottomNavBarRect.Y + -96),
                 }
             };
             _farmBuild.Click += (object sender, EventArgs e) => { GameState.SelectedObject = Building.Farm(); };
@@ -99,7 +105,8 @@ namespace build_and_expand.UI
             {
                 ObjectId = 400,
                 Position = new Point(16 + 288, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Quarry\r\nCost: 50 Wood, 2 Worker\r\nOutputs per day: 10 Stone", font)
+                TextBubble = new TextBubble(textBubble,
+                    "Quarry\r\nCost: 50 Wood, 2 Worker\r\nOutputs per day: 10 Stone", font)
                 {
                     Position = new Point(16 + 288, _bottomNavBarRect.Y + -96),
                 }
@@ -110,7 +117,8 @@ namespace build_and_expand.UI
             {
                 ObjectId = 500,
                 Position = new Point(16 + 384, _bottomNavBarRect.Y + 16),
-                TextBubble = new TextBubble(textBubble, "Wind Mill\r\nCost: 40 Wood, 1 Worker\r\nOutputs per day: 10 Food", font)
+                TextBubble = new TextBubble(textBubble,
+                    "Wind Mill\r\nCost: 40 Wood, 1 Worker\r\nOutputs per day: 10 Food", font)
                 {
                     Position = new Point(16 + 384, _bottomNavBarRect.Y + -96),
                 }
@@ -164,14 +172,14 @@ namespace build_and_expand.UI
             spriteBatch.Draw(_topNavBar, _topNavBarRect, Color.White);
 
             // draw each component
-            foreach(Component component in _components)
+            foreach (Component component in _components)
                 component.Draw(gameTime, spriteBatch);
         }
 
         public override void Update(GameTime gameTime, GameState gameState)
         {
             // update each component
-            foreach(Component component in _components)
+            foreach (Component component in _components)
                 component.Update(gameTime, gameState);
 
             // save gamestate
@@ -180,14 +188,16 @@ namespace build_and_expand.UI
 
         public bool Intersects(Rectangle rectangle)
         {
-            if(_bottomNavBarRect.Intersects(rectangle))
+            if (_bottomNavBarRect.Intersects(rectangle))
             {
                 return true;
             }
-            if(_topNavBarRect.Intersects(rectangle))
+
+            if (_topNavBarRect.Intersects(rectangle))
             {
                 return true;
             }
+
             return false;
         }
     }

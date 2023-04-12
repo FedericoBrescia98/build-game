@@ -30,14 +30,15 @@ namespace build_and_expand.UI
         public float DelayBubble { get; set; } = 0.5f;
         private bool ShowBubble = false;
         private float BubbleTime = 0;
+
         public Rectangle Rectangle =>
-                new Rectangle(Position.X,
+            new Rectangle(Position.X,
                 Position.Y,
-                (!string.IsNullOrEmpty(Text) ?
-                    (((int)_font.MeasureString(Text).X + TextPadding) > _texture.Width ?
-                        (int)_font.MeasureString(Text).X + TextPadding
-                    : _texture.Width)
-                : _texture.Width),
+                (!string.IsNullOrEmpty(Text)
+                    ? (((int)_font.MeasureString(Text).X + TextPadding) > _texture.Width
+                        ? (int)_font.MeasureString(Text).X + TextPadding
+                        : _texture.Width)
+                    : _texture.Width),
                 _texture.Height);
 
         public Button(Texture2D texture, SpriteFont font = null)
@@ -46,11 +47,12 @@ namespace build_and_expand.UI
             _font = font;
             PenColor = Color.Black;
             HoverColor = Color.DarkGray;
-            if(ObjectId >= 100)
+            if (ObjectId >= 100)
             {
                 ResourceLocked = true;
             }
-            if(font != null)
+
+            if (font != null)
             {
                 _font = font;
             }
@@ -59,20 +61,23 @@ namespace build_and_expand.UI
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             Color color = Color.White;
-            if(IsHovering)
+            if (IsHovering)
             {
                 color = HoverColor;
             }
-            if(Locked)
+
+            if (Locked)
             {
                 color = Color.DarkGray;
             }
-            if(IsSelected)
+
+            if (IsSelected)
             {
                 color = Color.DarkGray;
             }
+
             spriteBatch.Draw(_texture, Rectangle, color);
-            if(!string.IsNullOrEmpty(Text))
+            if (!string.IsNullOrEmpty(Text))
             {
                 float x = _font.MeasureString(Text).X / 2;
                 float y = _font.MeasureString(Text).Y / 2;
@@ -80,14 +85,15 @@ namespace build_and_expand.UI
                 spriteBatch.DrawString(_font,
                     Text,
                     new Vector2(Rectangle.X + (Rectangle.Width - Rectangle.Width / 2),
-                    Rectangle.Y + (Rectangle.Height - Rectangle.Height / 2)), PenColor,
+                        Rectangle.Y + (Rectangle.Height - Rectangle.Height / 2)), PenColor,
                     0,
                     origin,
                     Scale,
                     SpriteEffects.None,
                     1);
             }
-            if(ShowBubble)
+
+            if (ShowBubble)
             {
                 TextBubble.Draw(gameTime, spriteBatch);
             }
@@ -98,9 +104,9 @@ namespace build_and_expand.UI
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
-            if(ResourceLocked)
+            if (ResourceLocked)
             {
-                if(ObjectId != 0)
+                if (ObjectId != 0)
                 {
                     Building b = BuildingData.Dict_BuildingFromObjectID[ObjectId];
                     Locked = gameState.GameStateData.PlayerInventory.CanBuildObject(b);
@@ -111,23 +117,24 @@ namespace build_and_expand.UI
                 }
             }
 
-            if(mouseRectangle.Intersects(Rectangle))
+            if (mouseRectangle.Intersects(Rectangle))
             {
                 IsHovering = true;
 
-                if(TextBubble != null)
+                if (TextBubble != null)
                 {
                     BubbleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if(BubbleTime >= DelayBubble)
+                    if (BubbleTime >= DelayBubble)
                     {
                         BubbleTime = 0;
                         ShowBubble = true;
                     }
                 }
 
-                if(_currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
+                if (_currentMouse.LeftButton == ButtonState.Released &&
+                    _previousMouse.LeftButton == ButtonState.Pressed)
                 {
-                    if(Locked == false)
+                    if (Locked == false)
                     {
                         Click?.Invoke(this, new EventArgs());
                     }

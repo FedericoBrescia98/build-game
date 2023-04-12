@@ -7,36 +7,43 @@ namespace build_and_expand.Objects
     public class InventoryData
     {
         public static int ResourceMax = 500;
+
         public int Gold
         {
             get => _gold;
             set { _gold = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int Wood
         {
             get => _wood;
             set { _wood = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int Iron
         {
             get => _iron;
             set { _iron = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int Stone
         {
             get => _stone;
             set { _stone = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int FreeWorkers
         {
             get => _freeWorkers;
             set { _freeWorkers = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int TotalWorkers
         {
             get => _totalWorkers;
             set { _totalWorkers = value > ResourceMax ? ResourceMax : value; }
         }
+
         public int Food
         {
             get => _food;
@@ -69,19 +76,19 @@ namespace build_and_expand.Objects
 
         public bool RemoveResource(string resource, int amount_requested)
         {
-            if(amount_requested == 0)
+            if (amount_requested == 0)
             {
                 return true;
             }
 
             try
             {
-                if(string.IsNullOrEmpty(resource))
+                if (string.IsNullOrEmpty(resource))
                 {
                     throw new NotSupportedException("Resource name cannot be null or empty.");
                 }
 
-                if(amount_requested <= 0)
+                if (amount_requested <= 0)
                 {
                     throw new NotSupportedException("Cannot request a resource amount equal or less than zero.");
                 }
@@ -89,7 +96,7 @@ namespace build_and_expand.Objects
                 // switch based on resource name
                 // try and subtract amount requested from resource
                 // return true on success, false otherwise
-                switch(resource.ToLower())
+                switch (resource.ToLower())
                 {
                     case "gold":
                         Gold -= amount_requested;
@@ -113,7 +120,7 @@ namespace build_and_expand.Objects
                         return false;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Error getting resource: " + e.Message);
                 return false;
@@ -122,19 +129,19 @@ namespace build_and_expand.Objects
 
         public bool RequestResource(string resource, int amount_requested)
         {
-            if(amount_requested.Equals(0))
+            if (amount_requested.Equals(0))
             {
                 return true;
             }
 
             try
             {
-                if(string.IsNullOrEmpty(resource))
+                if (string.IsNullOrEmpty(resource))
                 {
                     throw new NotSupportedException("Resource name cannot be null or empty.");
                 }
 
-                if(amount_requested <= 0)
+                if (amount_requested <= 0)
                 {
                     throw new NotSupportedException("Cannot request a resource amount equal or less than zero.");
                 }
@@ -142,10 +149,10 @@ namespace build_and_expand.Objects
                 // switch based on resource name
                 // check amount requested from resource
                 // return true if available, false otherwise
-                switch(resource.ToLower())
+                switch (resource.ToLower())
                 {
                     case "gold":
-                        if(amount_requested <= Gold)
+                        if (amount_requested <= Gold)
                         {
                             return true;
                         }
@@ -154,7 +161,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "wood":
-                        if(amount_requested <= Wood)
+                        if (amount_requested <= Wood)
                         {
                             return true;
                         }
@@ -163,7 +170,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "iron":
-                        if(amount_requested <= Iron)
+                        if (amount_requested <= Iron)
                         {
                             return true;
                         }
@@ -172,7 +179,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "stone":
-                        if(amount_requested <= Stone)
+                        if (amount_requested <= Stone)
                         {
                             return true;
                         }
@@ -181,7 +188,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "workers":
-                        if(amount_requested <= FreeWorkers)
+                        if (amount_requested <= FreeWorkers)
                         {
                             return true;
                         }
@@ -190,7 +197,7 @@ namespace build_and_expand.Objects
                             return false;
                         }
                     case "food":
-                        if(amount_requested <= Food)
+                        if (amount_requested <= Food)
                         {
                             return true;
                         }
@@ -202,7 +209,7 @@ namespace build_and_expand.Objects
                         return false;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Error getting resource: " + e.Message);
                 return false;

@@ -25,10 +25,7 @@ namespace build_and_expand.Objects
         // Adding index operator to Grid class so that can use grid[][] to access specific cell from grid. 
         public Tile this[int i, int j]
         {
-            get
-            {
-                return _grid[i, j];
-            }
+            get { return _grid[i, j]; }
             set
             {
                 if (value.Object.ObjectId == 11) // if tile is a road
@@ -39,6 +36,7 @@ namespace build_and_expand.Objects
                 {
                     _roadList.Remove(new Point(i, j));
                 }
+
                 _grid[i, j] = value;
             }
         }
@@ -49,6 +47,7 @@ namespace build_and_expand.Objects
             {
                 return cellType.Object.ObjectId == 11; // if tile is a road
             }
+
             return cellType.Object.ObjectId == 0 || cellType.Object.ObjectId == 11; // if tile is a road or grass
         }
 
@@ -81,18 +80,22 @@ namespace build_and_expand.Objects
             {
                 adjacentCells.Add(new Point(x - 1, y));
             }
+
             if (x < _width - 1)
             {
                 adjacentCells.Add(new Point(x + 1, y));
             }
+
             if (y > 0)
             {
                 adjacentCells.Add(new Point(x, y - 1));
             }
+
             if (y < _height - 1)
             {
                 adjacentCells.Add(new Point(x, y + 1));
             }
+
             return adjacentCells;
         }
 
@@ -106,6 +109,7 @@ namespace build_and_expand.Objects
                     adjacentCells.RemoveAt(i);
                 }
             }
+
             return adjacentCells;
         }
 
@@ -119,6 +123,7 @@ namespace build_and_expand.Objects
                     adjacentCells.RemoveAt(i);
                 }
             }
+
             return adjacentCells;
         }
 
@@ -130,23 +135,27 @@ namespace build_and_expand.Objects
         /// <returns></returns>
         public Tile[] GetAllAdjacentCellTypes(int x, int y)
         {
-            Tile[] neighbours = {};
+            Tile[] neighbours = { };
             if (x > 0)
             {
                 neighbours[0] = _grid[x - 1, y];
             }
+
             if (x < _width - 1)
             {
                 neighbours[2] = _grid[x + 1, y];
             }
+
             if (y > 0)
             {
                 neighbours[3] = _grid[x, y - 1];
             }
+
             if (y < _height - 1)
             {
                 neighbours[1] = _grid[x, y + 1];
             }
+
             return neighbours;
         }
     }

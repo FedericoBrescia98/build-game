@@ -26,18 +26,18 @@ namespace build_and_expand.UI
         public AnimatedTexture(Texture2D anim_Texture, Point position)
         {
             _animFrameColumns = anim_Texture.Width / BaseTextureDim.X;
-            _animFrameCount = (anim_Texture.Width / BaseTextureDim.X) 
-                                        * (anim_Texture.Height / BaseTextureDim.Y);
+            _animFrameCount = (anim_Texture.Width / BaseTextureDim.X)
+                              * (anim_Texture.Height / BaseTextureDim.Y);
             AnimTexture = anim_Texture;
             Position = position;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if(Finished.Equals(false))
+            if (Finished.Equals(false))
             {
                 AnimTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(AnimTime >= AnimFrameTime)
+                if (AnimTime >= AnimFrameTime)
                 {
                     AnimTime -= AnimFrameTime;
                     AnimFrameIndex = (AnimFrameIndex + 1) % _animFrameCount;
@@ -46,17 +46,17 @@ namespace build_and_expand.UI
                 }
 
                 spriteBatch.Draw(
-                            AnimTexture,
-                            sourceRectangle:
-                                new Rectangle(_animFrameColIdx * BaseTextureDim.X,
-                                                _animFrameRowIdx * BaseTextureDim.Y,
-                                                BaseTextureDim.X,
-                                                BaseTextureDim.Y),
-                            position: Position.ToVector2(),
-                            color: DrawColor);
+                    AnimTexture,
+                    sourceRectangle:
+                    new Rectangle(_animFrameColIdx * BaseTextureDim.X,
+                        _animFrameRowIdx * BaseTextureDim.Y,
+                        BaseTextureDim.X,
+                        BaseTextureDim.Y),
+                    position: Position.ToVector2(),
+                    color: DrawColor);
             }
 
-            if((AnimFrameIndex == _animFrameCount - 1) && Loop.Equals(false))
+            if ((AnimFrameIndex == _animFrameCount - 1) && Loop.Equals(false))
             {
                 Finished = true;
                 AnimFrameIndex = 0;

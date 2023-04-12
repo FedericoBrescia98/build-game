@@ -18,9 +18,10 @@ namespace build_and_expand.UI
         public Color PenColor { get; set; } = Color.Black;
         public Point Position { get; set; }
         public Vector2 Scale { get; set; } = new Vector2(1f, 1f);
+
         public Rectangle Rectangle =>
             new Rectangle(Position.X + (C.TILETEXTURESIZE.X / 2) - (_bubbleTexture.Width / 2), Position.Y,
-                        _bubbleTexture.Width, _bubbleTexture.Height);
+                _bubbleTexture.Width, _bubbleTexture.Height);
 
         public TileBubble(GameContent content, string text, SpriteFont font)
         {
@@ -36,11 +37,13 @@ namespace build_and_expand.UI
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             _bubbleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if(_bubbleTime > Showtime)
+            if (_bubbleTime > Showtime)
             {
                 return;
             }
-            Rectangle bubbleRect = new Rectangle(Rectangle.X, Rectangle.Y + (2 * (int)_bubbleTime), Rectangle.Width, Rectangle.Height);
+
+            Rectangle bubbleRect = new Rectangle(Rectangle.X, Rectangle.Y + (2 * (int)_bubbleTime), Rectangle.Width,
+                Rectangle.Height);
             spriteBatch.Draw(_bubbleTexture, bubbleRect, Color.White);
 
             float x = _font.MeasureString(_text).X / 2;
@@ -49,13 +52,12 @@ namespace build_and_expand.UI
             spriteBatch.DrawString(_font,
                 _text,
                 new Vector2(Rectangle.X + (Rectangle.Width / 2),
-                Rectangle.Y + (Rectangle.Height / 2) + _bubbleTime), PenColor,
+                    Rectangle.Y + (Rectangle.Height / 2) + _bubbleTime), PenColor,
                 0,
                 origin,
                 Scale,
                 SpriteEffects.None,
                 1);
         }
-
     }
 }

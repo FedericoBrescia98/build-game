@@ -9,16 +9,20 @@ namespace build_and_expand.Objects
     {
         public int ObjectId { get; set; } = 1;
         public int TerrainId { get; set; } = 1;
+
         #region CONSTRUCTION COSTS
+
         public int GoldCost { get; set; } = 0;
         public int WoodCost { get; set; } = 0;
         public int IronCost { get; set; } = 0;
         public int StoneCost { get; set; } = 0;
         public int WorkersCost { get; set; } = 0;
         public int FoodCost { get; set; } = 0;
+
         #endregion
 
         #region OUTPUTS
+
         public int GoldCycleOutput { get; set; } = 0;
         public int WoodCycleOutput { get; set; } = 0;
         public int IronCycleOutput { get; set; } = 0;
@@ -32,6 +36,7 @@ namespace build_and_expand.Objects
         public int StoneStaticOutput { get; set; } = 0;
         public int WorkersStaticOutput { get; set; } = 0;
         public int FoodStaticOutput { get; set; } = 0;
+
         #endregion
     }
 }

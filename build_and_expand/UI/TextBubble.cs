@@ -21,9 +21,10 @@ namespace build_and_expand.UI
         private string _displayText = "";
 
         private float Field => Rectangle.Width * 0.9f;
+
         public Rectangle Rectangle =>
             new Rectangle(Position.X, Position.Y,
-                        _texture.Width, _texture.Height);
+                _texture.Width, _texture.Height);
 
         public TextBubble(Texture2D texture, string text, SpriteFont font)
         {
@@ -38,21 +39,22 @@ namespace build_and_expand.UI
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if(_displayText == "")
+            if (_displayText == "")
             {
                 string temp = "";
-                foreach(char c in _text)
+                foreach (char c in _text)
                 {
                     temp += c;
                     Vector2 textVector = _font.MeasureString(temp);
-                    if(textVector.X >= Field)
+                    if (textVector.X >= Field)
                     {
                         temp += Environment.NewLine;
                         _displayText += temp;
                         temp = "";
                     }
                 }
-                if(temp != "")
+
+                if (temp != "")
                 {
                     _displayText += temp;
                 }
@@ -66,13 +68,12 @@ namespace build_and_expand.UI
             spriteBatch.DrawString(_font,
                 _displayText,
                 new Vector2(Rectangle.X + (Rectangle.Width / 2),
-                Rectangle.Y + (Rectangle.Height / 2) - (2*TextPadding)), PenColor,
+                    Rectangle.Y + (Rectangle.Height / 2) - (2 * TextPadding)), PenColor,
                 0,
                 origin,
                 Scale,
                 SpriteEffects.None,
                 1);
         }
-
     }
 }

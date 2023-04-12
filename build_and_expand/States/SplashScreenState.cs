@@ -18,7 +18,8 @@ namespace build_and_expand.States
         private int _countdown = 220;
 
         // construct state
-        public SplashScreenState(Game game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
+        public SplashScreenState(Game game, GraphicsDevice graphicsDevice, ContentManager content) : base(game,
+            graphicsDevice, content)
         {
             _splashTexture = content.Load<Texture2D>("Sprites/SplashScreen/SplashScreen");
             _glimmerSound = content.Load<Song>("Sounds/FX/Glimmer");
@@ -43,16 +44,18 @@ namespace build_and_expand.States
 
         public override void Update(GameTime gameTime)
         {
-            if(_countdown > 0)
+            if (_countdown > 0)
             {
                 // subtract countdown
-                if(_countdown.Equals(100))
+                if (_countdown.Equals(100))
                 {
                     MediaPlayer.Play(_glimmerSound);
                 }
+
                 _countdown--;
             }
-            if(_countdown.Equals(0))
+
+            if (_countdown.Equals(0))
             {
                 // change to main menu at end of countdown
                 _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
@@ -61,7 +64,6 @@ namespace build_and_expand.States
                 MediaPlayer.Play(_song);
                 MediaPlayer.Volume = 0.2f;
                 MediaPlayer.IsRepeating = true;
-
             }
         }
     }

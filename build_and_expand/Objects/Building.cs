@@ -11,7 +11,7 @@ namespace build_and_expand.Objects
         public bool RequiresRoad { get; private set; } = true;
 
         public Building(List<float> settings, List<int> costs,
-                        List<int> cycleOutputs, List<int> staticOutputs)
+            List<int> cycleOutputs, List<int> staticOutputs)
         {
             // set tileobject properties
             ObjectId = (int)settings[0];
@@ -93,7 +93,7 @@ namespace build_and_expand.Objects
         {
             List<float> settings = new List<float>()
             {
-                200, 
+                200,
             };
 
             // set costs
@@ -315,7 +315,6 @@ namespace build_and_expand.Objects
 
         public void Update(GameTime gameTime)
         {
-
         }
     }
 }

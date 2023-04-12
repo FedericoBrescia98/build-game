@@ -1,3 +1,2 @@
-﻿
-using var game = new build_and_expand.Game();
+﻿using var game = new build_and_expand.Game();
 game.Run();

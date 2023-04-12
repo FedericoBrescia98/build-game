@@ -15,7 +15,8 @@ namespace build_and_expand.States
         private readonly Texture2D _cursorTexture;
         private readonly Texture2D _backgroundTexture;
 
-        public MenuState(Game game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
+        public MenuState(Game game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice,
+            content)
         {
             _cursorTexture = _content.Load<Texture2D>("Sprites/UI/cursor");
 
@@ -26,10 +27,12 @@ namespace build_and_expand.States
             _backgroundTexture = _content.Load<Texture2D>("Sprites/Images/worldCapture");
 
             #region CREATE BUTTONS
+
             // create buttons and set properties, and click event functions
             Button newGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, -220),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) +
+                           new Point(0, -220),
                 Text = "New Game",
                 HoverColor = Color.Green,
                 Scale = new Vector2(2.5f, 2.5f)
@@ -39,7 +42,8 @@ namespace build_and_expand.States
 
             Button loadGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, -100),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) +
+                           new Point(0, -100),
                 Text = "Load Game",
                 HoverColor = Color.CornflowerBlue,
                 Scale = new Vector2(2.5f, 2.5f)
@@ -49,7 +53,8 @@ namespace build_and_expand.States
 
             Button quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) + new Point(0, 100),
+                Position = new Point(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2) +
+                           new Point(0, 100),
                 Text = "Quit Game",
                 HoverColor = Color.Red,
                 Scale = new Vector2(2.5f, 2.5f)
@@ -105,10 +110,10 @@ namespace build_and_expand.States
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             // draw background
-            spriteBatch.Draw(_backgroundTexture, new Vector2(0,0), Color.LightBlue);
+            spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.LightBlue);
 
             // draw each component
-            foreach(Component component in _components)
+            foreach (Component component in _components)
                 component.Draw(gameTime, spriteBatch);
 
             spriteBatch.Draw(_cursorTexture, mp, Color.White);
@@ -119,7 +124,7 @@ namespace build_and_expand.States
         public override void Update(GameTime gameTime)
         {
             // update each component
-            foreach(Component component in _components)
+            foreach (Component component in _components)
                 component.Update(gameTime, null);
         }
     }

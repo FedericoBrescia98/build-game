@@ -1,189 +1,189 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="build_and_expand.Content.ContentData&lt;T&gt;" Collapsed="true">
-    <Position X="10" Y="1.5" Width="1.5" />
+    <Position X="16.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Content\GameContent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Content.GameContent" Collapsed="true">
-    <Position X="15.25" Y="1.5" Width="1.5" />
+    <Position X="21.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAgAAACgQAAAgAJAEQgAEAAAAgAhAAAAAAAAAAAAAg=</HashCode>
       <FileName>Content\GameContent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Building" Collapsed="true">
-    <Position X="0.5" Y="7.75" Width="1.5" />
+    <Position X="4.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAQBAACAAAgAAAAAIAAAAAQAAAAAAAAABAAAAIAAAAA=</HashCode>
+      <HashCode>EAQBAACAAAgAAAAAIAAAAAQAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Objects\Building.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.BuildingData" Collapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="18.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAIAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Objects\BuildingData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Grid" Collapsed="true">
-    <Position X="11.75" Y="2.5" Width="1.5" />
+    <Position X="18.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgEBAAABADAkAABCIBAAFAAABEAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Objects\Grid.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="build_and_expand.Objects.GridSearch" Collapsed="true">
-    <Position X="13.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABAAAIA=</HashCode>
-      <FileName>Objects\GridSearch.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="build_and_expand.Objects.InventoryData" Collapsed="true">
-    <Position X="15.25" Y="2.5" Width="1.5" />
+    <Position X="20" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAEAEAAABABAAEAAQAAAAAACAEAAoAggAAAE=</HashCode>
+      <HashCode>AAEIAAAEAEAUBAABABAAEAkAAAAEAACAEAAoAgghAAE=</HashCode>
       <FileName>Objects\InventoryData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Map" Collapsed="true">
-    <Position X="10" Y="3.5" Width="1.5" />
+    <Position X="21.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAEIAAgAAQAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAFIAAgAAQAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects\Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Resource" Collapsed="true">
-    <Position X="2.75" Y="7.75" Width="1.5" />
+    <Position X="2.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAACAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Objects\Resource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Tile" Collapsed="true">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+    <Position X="16.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AhQAAAAAAhQAAgAgAABIAAAggAAACQAABAIIAAAGAgA=</HashCode>
+      <HashCode>AhQAAAAAAhQAAgAgAABIAAAAgAAAAQAABAIIAAAGAgA=</HashCode>
       <FileName>Objects\Tile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.TileObject" Collapsed="true">
-    <Position X="1.75" Y="6.5" Width="1.5" />
+    <Position X="3.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>RCRADAAEAgAAAAAEABAgAAAAAAAACAAAAAAQCAKgBCA=</HashCode>
       <FileName>Objects\TileObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Objects.Inventory" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+    <Position X="7.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABQAAAAAAAAQAgABAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>UI\Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RoadManager" Collapsed="true">
-    <Position X="11.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Objects\RoadManager.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="build_and_expand.States.GameStateData" Collapsed="true">
-    <Position X="10" Y="2.5" Width="1.5" />
+    <Position X="16.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAJAAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>States\GameState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.States.GameState" Collapsed="true">
-    <Position X="0.75" Y="4.75" Width="1.5" />
+    <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgQBAACIAQASAoAIAGAAAAESFAAIIcIAAgGIAAIKAIU=</HashCode>
+      <HashCode>AgRBACCIAQASAoQIAGAAAAETFAAIIcIAAgGIAAIKAIU=</HashCode>
       <FileName>States\GameState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.States.MenuState" Collapsed="true">
-    <Position X="3" Y="4.75" Width="1.5" />
+    <Position X="4.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAQAAEIgAAAAAAAAAAAAIAAAAAAAAAAAgAAAA=</HashCode>
+      <HashCode>AAQAAAAAQAAFIgAAAAAAAAAAAAIAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>States\MenuState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.States.SplashScreenState" Collapsed="true">
-    <Position X="5.25" Y="4.75" Width="1.5" />
+    <Position X="7" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAgAAgAAAAAAAABAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAQAAAAAAAgBAgAAAAIAAABAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>States\SplashScreenState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.States.State" Collapsed="true">
-    <Position X="3" Y="3.5" Width="1.5" />
+    <Position X="4.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgABAAAAAABAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>States\State.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.AnimatedTexture" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="16.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAEAIAIAAAAAgAgAARABAAAAABAAAAACAAABAACAAA=</HashCode>
       <FileName>UI\AnimatedTexture.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.Button" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="11.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAwAAAAgAQAAEgAgAAIAABAABCCgAAAAAAQACAAAAgI=</HashCode>
+      <HashCode>QAwAAAggAQAAEgAgAAICAJAABCCgAABAAAQASAAAAgI=</HashCode>
       <FileName>UI\Button.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.Calendar" Collapsed="true">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAgCBAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAgCBAAAAAAAAAACAAACAAAAAAAAAAAA=</HashCode>
       <FileName>UI\Calendar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.Camera" Collapsed="true">
-    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Position X="21.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAwAAACAAAAAAAQAEQAAAABAAQCAAAABAAAAAAEEAAA=</HashCode>
       <FileName>UI\Camera.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.Component" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>UI\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.FPS_Counter" Collapsed="true">
-    <Position X="11.75" Y="1.5" Width="1.5" />
+    <Position X="18.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAgAAAAACAAAAAEAEAAAAAAAQ=</HashCode>
       <FileName>UI\FPS_Counter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.UI.HUD" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+    <Position X="9.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAIAAAAAIgABAAAAAAAAIACEAACAAhAQEAAAIIA=</HashCode>
+      <HashCode>AAQAAAIAAAAAIgARABAAAAAAIgCEAACAAhAYECAAIIA=</HashCode>
       <FileName>UI\HUD.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="build_and_expand.UI.TextBubble" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAAgAgAAIAAAAABICgAAAIAAQAIAAAgAA=</HashCode>
+      <FileName>UI\TextBubble.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="build_and_expand.UI.TileBubble" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAAoAgAAIAAAACAACgAAAIABQAAAAAAAA=</HashCode>
+      <FileName>UI\TileBubble.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="build_and_expand.C" Collapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Position X="20" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEACACAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Common.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="build_and_expand.Game" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
+    <Position X="20" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQBQAAAAAAABwAAAAAAAAAAAICAAAACAIAAAgACABQ=</HashCode>
       <FileName>Game.cs</FileName>

@@ -19,7 +19,12 @@ namespace build_and_expand.States
     {
         // time data
         public int Day { get; set; } = 1;
-        public int Year { get { return Day / 365; } set { } }
+
+        public int Year
+        {
+            get { return Day / 365; }
+            set { }
+        }
 
         // player inventory data
         public InventoryData PlayerInventory { get; set; } = new InventoryData();
@@ -38,17 +43,22 @@ namespace build_and_expand.States
         #region PROPS
 
         #region LOADING
+
         protected bool IsSaving = false;
         public bool IsLoaded = false;
         public string LoadingText { get; set; } = "Loading Game...";
+
         #endregion
 
         #region GAME CONTENT
+
         // gamecontent: holds all sprites, effects, sounds, fonts
         public GameContent GameContent { get; set; }
+
         #endregion
 
         #region MAP AND CAMERA
+
         private Map _currentMap { get; set; }
         public Map CurrentMap => _currentMap;
         private Camera _currentCamera { get; set; }
@@ -57,28 +67,34 @@ namespace build_and_expand.States
         #endregion
 
         #region MOUSE & KEYBOARD STATES
+
         private KeyboardState _previousKeyboardState { get; set; }
         private MouseState _previousMouseState { get; set; }
         public KeyboardState KeyboardState { get; set; }
         public MouseState MouseState { get; set; }
+
         #endregion
 
         #region GAME STATE DATA
+
         public GameStateData GameStateData { get; set; }
         private const float _timeCycleDelay = 5; // seconds
         private float _remainingDelay = _timeCycleDelay;
 
         public Tile CurrentlySelectedTile { get; set; }
         public Tile CurrentlyPressedTile { get; set; } = null;
+
         #endregion
 
         #region COMPONENTS
+
         public List<Component> Components { get; set; } = new List<Component>();
         private Texture2D CursorTexture { get; set; }
         public HUD GameHUD { get; set; }
         public TileObject SelectedObject { get; set; }
         public Tile CurrentlyHoveredTile { get; set; }
         public List<TileBubble> TileBubbles { get; set; } = new List<TileBubble>();
+
         #endregion
 
         #endregion
@@ -86,7 +102,9 @@ namespace build_and_expand.States
         #region METHODS
 
         #region CONSTRUCTOR
-        public GameState(Game game, GraphicsDevice graphicsDevice, ContentManager content, bool newgame) : base(game, graphicsDevice, content)
+
+        public GameState(Game game, GraphicsDevice graphicsDevice, ContentManager content, bool newgame) : base(game,
+            graphicsDevice, content)
         {
             GameContent = new GameContent(content);
             _graphicsDevice = graphicsDevice;
@@ -96,7 +114,7 @@ namespace build_and_expand.States
 
             LoadLoadingScreen();
             Task.Run(() => LoadHUD());
-            if(newgame is true)
+            if (newgame is true)
             {
                 Console.WriteLine($"Starting new game...");
                 Task.Run(() => NewGame());
@@ -110,7 +128,8 @@ namespace build_and_expand.States
 
         public void LoadLoadingScreen()
         {
-            Vector2 loading_bar_dimensions = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 8);
+            Vector2 loading_bar_dimensions =
+                new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 8);
             Vector2 loading_bar_location =
                 new Vector2(_graphicsDevice.Viewport.Width / 4, (_graphicsDevice.Viewport.Height / 4) * 2.5f);
         }
@@ -125,6 +144,7 @@ namespace build_and_expand.States
         {
             _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
         }
+
         #endregion
 
         #region HANDLE MAP DATA
@@ -146,7 +166,7 @@ namespace build_and_expand.States
         public void LoadNewMap()
         {
             _currentMap = new Map(GameContent);
-            foreach(Tile tile in _currentMap.grid.GridTiles)
+            foreach (Tile tile in _currentMap.grid.GridTiles)
             {
                 tile.Click += TileOnClick;
                 tile.Pressed += TileOnPressed;
@@ -177,7 +197,7 @@ namespace build_and_expand.States
                 String data = File.ReadAllText("gameData.json");
 
                 // if the data read isn't null or empty, load the map | else, throw exception
-                if(string.IsNullOrEmpty(data).Equals(true))
+                if (string.IsNullOrEmpty(data).Equals(true))
                 {
                     LoadingText = $"Map data corrupted... one moment...";
                     throw new NotSupportedException("Error Reading Map Data: Data is empty.");
@@ -194,7 +214,7 @@ namespace build_and_expand.States
 
                     // initialize loaded map
                     _currentMap = new Map(GameContent);
-                    foreach(Tile tile in loadedGameStateData.MapTiles)
+                    foreach (Tile tile in loadedGameStateData.MapTiles)
                     {
                         Point tp = tile.PositionToMap;
                         _currentMap.grid[tp.X, tp.Y] = new Tile(GameContent, tile.Object, tile.Position);
@@ -211,7 +231,7 @@ namespace build_and_expand.States
                 LoadingText = $"Looping through map data completed...";
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Error Loading Map Data: {e.Message}.");
                 return false;
@@ -221,9 +241,10 @@ namespace build_and_expand.States
         #endregion
 
         #region UPDATE
+
         public override void Update(GameTime gameTime)
         {
-            if(IsLoaded)
+            if (IsLoaded)
             {
                 // handle current state input (keyboard / mouse)
                 HandleInput();
@@ -234,13 +255,13 @@ namespace build_and_expand.States
                     _currentMap.Update(gameTime, this);
                     _currentCamera.Update();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine("Error drawing map: " + e.Message);
                 }
 
                 // also update ui components
-                foreach(Component c in Components)
+                foreach (Component c in Components)
                 {
                     c.Update(gameTime, this);
                 }
@@ -248,7 +269,7 @@ namespace build_and_expand.States
                 // update timer (day cycle)
                 float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 _remainingDelay -= timer;
-                if(_remainingDelay <= 0)
+                if (_remainingDelay <= 0)
                 {
                     // update gamestate data and reset timer
                     Task.Run(() => UpdateGameState(gameTime));
@@ -276,7 +297,7 @@ namespace build_and_expand.States
             int day = GameStateData.Day;
 
             // if day is a multiple of 10, save the game
-            if((day % 10).Equals(0))
+            if ((day % 10).Equals(0))
             {
                 SaveGame();
             }
@@ -285,23 +306,31 @@ namespace build_and_expand.States
         public void ProcessBuildings()
         {
             TileBubbles = new List<TileBubble>();
-            foreach(Tile tile in _currentMap.grid.GridTiles)
+            foreach (Tile tile in _currentMap.grid.GridTiles)
             {
                 // if the object ID is greater than 100 (is a building)
-                if(tile.Object.ObjectId >= 100)
+                if (tile.Object.ObjectId >= 100)
                 {
                     SpriteFont font = GameContent.GetFont(1);
                     string text = "";
                     TileObject tileObject = tile.Object;
 
-                    text = tileObject.FoodCycleOutput != 0 ? text + "+" + tileObject.FoodCycleOutput.ToString() + " food" : text;
+                    text = tileObject.FoodCycleOutput != 0
+                        ? text + "+" + tileObject.FoodCycleOutput.ToString() + " food"
+                        : text;
                     //text = tileObject.IronCycleOutput != 0 ? text + "+" + tileObject.IronCycleOutput.ToString() + " iron" : text;
                     //text = tileObject.GoldCycleOutput != 0 ? text + "+" + tileObject.GoldCycleOutput.ToString() + " gold" : text;
-                    text = tileObject.StoneCycleOutput != 0 ? text + "+" + tileObject.StoneCycleOutput.ToString() + " stone" : text;
-                    text = tileObject.WoodCycleOutput != 0 ? text + "+" + tileObject.WoodCycleOutput.ToString() + " wood" : text;
-                    text = tileObject.WorkersCycleOutput != 0 ? text + "+" + tileObject.WorkersCycleOutput.ToString() + " workers" : text;
+                    text = tileObject.StoneCycleOutput != 0
+                        ? text + "+" + tileObject.StoneCycleOutput.ToString() + " stone"
+                        : text;
+                    text = tileObject.WoodCycleOutput != 0
+                        ? text + "+" + tileObject.WoodCycleOutput.ToString() + " wood"
+                        : text;
+                    text = tileObject.WorkersCycleOutput != 0
+                        ? text + "+" + tileObject.WorkersCycleOutput.ToString() + " workers"
+                        : text;
 
-                    if(text != "")
+                    if (text != "")
                     {
                         TileBubble bubble = new TileBubble(GameContent, text, font)
                         {
@@ -309,6 +338,7 @@ namespace build_and_expand.States
                         };
                         TileBubbles.Add(bubble);
                     }
+
                     GameStateData.PlayerInventory.AddObjectCycleOutputs(tile.Object);
                 }
             }
@@ -325,7 +355,7 @@ namespace build_and_expand.States
         /// </summary>
         public void SaveGame()
         {
-            if(IsSaving.Equals(true))
+            if (IsSaving.Equals(true))
             {
                 return;
             }
@@ -335,7 +365,7 @@ namespace build_and_expand.States
                 // delete previous backups
                 File.Delete("gameData_backup.json");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -346,7 +376,7 @@ namespace build_and_expand.States
                 // change filename to backup format
                 File.Move($"gameData.json", "gameData_backup.json");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Error backing up previous map data: " + e.Message);
             }
@@ -355,10 +385,11 @@ namespace build_and_expand.States
 
             // prepare game data class
             List<Tile> newMapTiles = new List<Tile>();
-            foreach(Tile tile in _currentMap.grid.GridTiles)
+            foreach (Tile tile in _currentMap.grid.GridTiles)
             {
                 newMapTiles.Add(tile);
             }
+
             GameStateData.MapTiles = newMapTiles;
 
             // get current state data file and save
@@ -383,7 +414,7 @@ namespace build_and_expand.States
             // get mouse data
             Point mousePosition = Mouse.GetState().Position;
             Rectangle mouseRectangle = new Rectangle(mousePosition.X, mousePosition.Y, 1, 1);
-            if(GameHUD.Intersects(mouseRectangle).Equals(true))
+            if (GameHUD.Intersects(mouseRectangle).Equals(true))
             {
                 return;
             }
@@ -396,7 +427,7 @@ namespace build_and_expand.States
             CurrentlyPressedTile = null;
 
             // if selected object to build
-            if(SelectedObject != null)
+            if (SelectedObject != null)
             {
                 // error sound
                 SoundEffect Sound = GameContent.GetSoundEffect(2);
@@ -405,13 +436,13 @@ namespace build_and_expand.States
                 {
                     // does the tile have a valid objectid,
                     // and does the clicked tile not already have an object in it?
-                    if(SelectedObject.ObjectId > 0 && tile.Object.ObjectId <= 100)
+                    if (SelectedObject.ObjectId > 0 && tile.Object.ObjectId <= 100)
                     {
                         // get a correctly casted version of the selected obj
                         Building obj = (Building)SelectedObject;
 
                         // check balance to see if player can afford building
-                        if(GameStateData.PlayerInventory.CanBuildObject(obj).Equals(false))
+                        if (GameStateData.PlayerInventory.CanBuildObject(obj).Equals(false))
                         {
                             throw new Exception("Can't afford to place!");
                         }
@@ -429,32 +460,33 @@ namespace build_and_expand.States
                         GameStateData.PlayerInventory.AddObjectStaticOutputs(obj);
                     }
                 }
-                catch(Exception exception)
+                catch (Exception exception)
                 {
                     Console.WriteLine($"ERROR ON TILE PLACE: {exception.Message}");
                 }
+
                 Sound.Play();
             }
-
         }
 
         public void DeleteBuildingButtonClick()
         {
-            if(CurrentlySelectedTile is null)
+            if (CurrentlySelectedTile is null)
             {
                 CursorTexture = GameContent.GetUiTexture(13);
 
-                foreach(Tile t in _currentMap.grid.GridTiles)
+                foreach (Tile t in _currentMap.grid.GridTiles)
                 {
                     t.Click += TileOnDemolish;
                 }
             }
             else
             {
-                foreach(Tile t in _currentMap.grid.GridTiles)
+                foreach (Tile t in _currentMap.grid.GridTiles)
                 {
                     t.Click -= TileOnDemolish;
                 }
+
                 CurrentlySelectedTile = null;
             }
         }
@@ -462,12 +494,13 @@ namespace build_and_expand.States
         private void TileOnDemolish(object sender, EventArgs e)
         {
             // delete a building
-            foreach(Tile t in _currentMap.grid.GridTiles)
+            foreach (Tile t in _currentMap.grid.GridTiles)
             {
-                if(t != CurrentlySelectedTile)
+                if (t != CurrentlySelectedTile)
                 {
                     continue;
                 }
+
                 t.ObjectDestroyed = true;
 
                 // play poof sound
@@ -477,9 +510,11 @@ namespace build_and_expand.States
                 GameStateData.PlayerInventory.AddObjectDestroyedCosts(t.Object);
             }
         }
+
         #endregion
 
         #region HANDLE INPUTS
+
         public void HandleInput()
         {
             // set previous keyboardstate = keyboardstate;
@@ -490,76 +525,81 @@ namespace build_and_expand.States
             KeyboardState = Keyboard.GetState();
             MouseState = Mouse.GetState();
 
-            if(MouseState.RightButton == ButtonState.Released && _previousMouseState.RightButton == ButtonState.Pressed)
+            if (MouseState.RightButton == ButtonState.Released &&
+                _previousMouseState.RightButton == ButtonState.Pressed)
             {
                 CursorTexture = GameContent.GetUiTexture(12);
 
                 SelectedObject = null;
-                foreach(Tile t in _currentMap.grid.GridTiles)
+                foreach (Tile t in _currentMap.grid.GridTiles)
                 {
                     t.Click -= TileOnDemolish;
                 }
+
                 CurrentlySelectedTile = null;
             }
         }
+
         #endregion
 
         #region DRAW
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             Point mousePoint = Mouse.GetState().Position;
             Vector2 mouseVector = new Vector2(mousePoint.X, mousePoint.Y);
 
-            if(IsLoaded)
+            if (IsLoaded)
             {
                 // TWO SPRITE BATCHES:
                 // First batch is for the game itself, the map, npcs, all that live things
                 // Second batch is for UI and HUD rendering - separate from camera matrixes and all that ingame things
 
                 spriteBatch.Begin(SpriteSortMode.Deferred,
-                                    BlendState.AlphaBlend,
-                                    null,
-                                    null,
-                                    null,
-                                    null,
-                                    CurrentCamera.getTransformation());
+                    BlendState.AlphaBlend,
+                    null,
+                    null,
+                    null,
+                    null,
+                    CurrentCamera.getTransformation());
                 // draw game here
                 try
                 {
                     _currentMap.Draw(gameTime, spriteBatch);
-                    foreach(TileBubble bubble in TileBubbles)
+                    foreach (TileBubble bubble in TileBubbles)
                     {
                         bubble.Draw(gameTime, spriteBatch);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine("Error drawing map:" + e.Message);
                 }
+
                 spriteBatch.End();
 
                 //--------------------------------------------------------
 
                 spriteBatch.Begin();
                 // draw UI / HUD here 
-                foreach(Component c in Components)
+                foreach (Component c in Components)
                 {
                     c.Draw(gameTime, spriteBatch);
                 }
 
-                if(SelectedObject != null)
+                if (SelectedObject != null)
                 {
-                    if(SelectedObject.ObjectId > 0)
+                    if (SelectedObject.ObjectId > 0)
                     {
                         // zoom camera for scaling object texture
                         float zoom = _currentCamera.Zoom;
 
                         Texture2D texture = GameContent.GetTileTexture(SelectedObject.ObjectId);
                         Vector2 pos = mouseVector - new Vector2((int)(texture.Width * zoom) / 2,
-                                                                (int)(texture.Height * zoom) - ((int)(texture.Height * zoom) * 0.25f));
+                            (int)(texture.Height * zoom) - ((int)(texture.Height * zoom) * 0.25f));
                         Rectangle rectangle = new Rectangle((int)pos.X, (int)pos.Y,
-                                                            (int)(texture.Width * zoom),
-                                                            (int)(texture.Height * zoom));
+                            (int)(texture.Width * zoom),
+                            (int)(texture.Height * zoom));
                         spriteBatch.Draw(texture, destinationRectangle: rectangle, color: Color.White);
                     }
                 }
@@ -584,7 +624,8 @@ namespace build_and_expand.States
                 float y = (GameContent.GetFont(1).MeasureString(LoadingText).Y / 2);
 
                 // draw loading text
-                spriteBatch.DrawString(GameContent.GetFont(1), LoadingText, dimensions, Color.White, 0.0f, new Vector2(x, y), 1.0f, SpriteEffects.None, 1.0f);
+                spriteBatch.DrawString(GameContent.GetFont(1), LoadingText, dimensions, Color.White, 0.0f,
+                    new Vector2(x, y), 1.0f, SpriteEffects.None, 1.0f);
             }
 
             Point msp = Mouse.GetState().Position;
@@ -592,6 +633,7 @@ namespace build_and_expand.States
             spriteBatch.Draw(CursorTexture, mp, Color.White);
             spriteBatch.End();
         }
+
         #endregion
 
         #endregion

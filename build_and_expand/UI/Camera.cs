@@ -32,34 +32,37 @@ namespace build_and_expand.UI
             _keyboardState = Keyboard.GetState();
 
             // keyboard moving map logic
-            if(_keyboardState.IsKeyDown(Keys.A))
+            if (_keyboardState.IsKeyDown(Keys.A))
             {
                 _pos += new Vector2(-5, 0);
-                if(_pos.X < 0)
+                if (_pos.X < 0)
                 {
                     _pos = new Vector2(0, _pos.Y);
                 }
             }
-            if(_keyboardState.IsKeyDown(Keys.D))
+
+            if (_keyboardState.IsKeyDown(Keys.D))
             {
                 _pos += new Vector2(5, 0);
-                if(_pos.X > C.DISPLAYDIM.X)
+                if (_pos.X > C.DISPLAYDIM.X)
                 {
                     _pos = new Vector2(C.DISPLAYDIM.X, _pos.Y);
                 }
             }
-            if(_keyboardState.IsKeyDown(Keys.W))
+
+            if (_keyboardState.IsKeyDown(Keys.W))
             {
                 _pos += new Vector2(0, -5);
-                if(_pos.Y < 0)
+                if (_pos.Y < 0)
                 {
                     _pos = new Vector2(_pos.X, 0);
                 }
             }
-            if(_keyboardState.IsKeyDown(Keys.S))
+
+            if (_keyboardState.IsKeyDown(Keys.S))
             {
                 _pos += new Vector2(0, 5);
-                if(_pos.Y > C.DISPLAYDIM.Y)
+                if (_pos.Y > C.DISPLAYDIM.Y)
                 {
                     _pos = new Vector2(_pos.X, C.DISPLAYDIM.Y);
                 }
@@ -100,31 +103,34 @@ namespace build_and_expand.UI
             //}
 
             // zoom logic
-            if(_currentMouse.ScrollWheelValue > _previousScrollValue)
+            if (_currentMouse.ScrollWheelValue > _previousScrollValue)
             {
                 _zoom += 0.04f;
-                if(_zoom > _maxZoom)
+                if (_zoom > _maxZoom)
                 {
                     _zoom = _maxZoom;
                 }
             }
-            if(_currentMouse.ScrollWheelValue < _previousScrollValue)
+
+            if (_currentMouse.ScrollWheelValue < _previousScrollValue)
             {
                 _zoom += -0.04f;
-                if(_zoom < _minZoom)
+                if (_zoom < _minZoom)
                 {
                     _zoom = _minZoom;
                 }
             }
+
             _previousScrollValue = _currentMouse.ScrollWheelValue;
         }
 
         public Matrix getTransformation()
         {
             _transform =
-              Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
-                         Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
-                         Matrix.CreateTranslation(new Vector3(_graphicsDevice.Viewport.Width * 0.5f, _graphicsDevice.Viewport.Height * 0.5f, 0));
+                Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
+                Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
+                Matrix.CreateTranslation(new Vector3(_graphicsDevice.Viewport.Width * 0.5f,
+                    _graphicsDevice.Viewport.Height * 0.5f, 0));
             return _transform;
         }
     }

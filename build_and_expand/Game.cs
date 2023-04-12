@@ -50,26 +50,27 @@ namespace build_and_expand
         protected override void Update(GameTime gameTime)
         {
             // manage inputs only if game has focus
-            if(IsActive)
+            if (IsActive)
             {
                 _previousMouseState = _currentMouseState;
                 _currentMouseState = Mouse.GetState();
 
                 // make click sound
-                if(_currentMouseState.LeftButton == ButtonState.Released &&
-                        _previousMouseState.LeftButton == ButtonState.Pressed)
+                if (_currentMouseState.LeftButton == ButtonState.Released &&
+                    _previousMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if(IsMouseInsideWindow())
+                    if (IsMouseInsideWindow())
                     {
                         bool makeSound = true;
-                        if(_currentState is GameState s)
+                        if (_currentState is GameState s)
                         {
-                            if(!s.IsLoaded)
+                            if (!s.IsLoaded)
                             {
                                 makeSound = false;
                             }
                         }
-                        if(makeSound.Equals(true))
+
+                        if (makeSound.Equals(true))
                         {
                             ClickSound.Play(0.2f, -0.3f, 0.0f);
                         }
@@ -77,11 +78,11 @@ namespace build_and_expand
                 }
 
                 // ESC will open the menu
-                if(_currentState is not MenuState)
+                if (_currentState is not MenuState)
                 {
-                    if(Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
-                        if(_currentState is GameState state)
+                        if (_currentState is GameState state)
                         {
                             Task.Run(() => state.SaveGame());
                         }
@@ -93,7 +94,7 @@ namespace build_and_expand
 
 
             // next state logic
-            if(_nextState != null)
+            if (_nextState != null)
             {
                 _currentState = _nextState;
                 _nextState = null;
@@ -106,7 +107,7 @@ namespace build_and_expand
         protected override void Draw(GameTime gameTime)
         {
             // draw only if game has focus
-            if(IsActive)
+            if (IsActive)
             {
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 _currentState.Draw(gameTime, _spriteBatch);

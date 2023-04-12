@@ -52,7 +52,7 @@ namespace build_and_expand.Objects
             Position = position;
             PositionToMap = new Point(position.X / C.TILETEXTURESIZE.X, position.Y / C.TILETEXTURESIZE.Y);
             PreviousMouseState = Mouse.GetState();
-            if(Object.ObjectId >= 1 && content != null)
+            if (Object.ObjectId >= 1 && content != null)
             {
                 DestructionFX = new AnimatedTexture(Content.GetTileTexture(-2), Position);
             }
@@ -62,13 +62,12 @@ namespace build_and_expand.Objects
         // - check for mouse hovering and click (select)
         public void Update(GameTime gameTime, GameState gameState)
         {
-
             MouseState currentMouse = Mouse.GetState();
 
             // convert mouse screen position to world position
             Point mScreenPosition = currentMouse.Position;
             Vector2 mWorldPosition = Vector2.Transform(mScreenPosition.ToVector2(),
-                                                        Matrix.Invert(gameState.CurrentCamera.getTransformation()));
+                Matrix.Invert(gameState.CurrentCamera.getTransformation()));
 
             // get bounds for mouse world position
             Rectangle mouseWorldRectangle = new Rectangle((int)mWorldPosition.X, (int)mWorldPosition.Y, 1, 1);
@@ -77,15 +76,16 @@ namespace build_and_expand.Objects
             Rectangle mouseScreenRectangle = new Rectangle((int)mScreenPosition.X, (int)mScreenPosition.Y, 1, 1);
 
             // check if mouse bounds intersects with tile touchbox bounds
-            if(mouseWorldRectangle.Intersects(TouchHitbox) && gameState.GameHUD.Intersects(mouseScreenRectangle).Equals(false))
+            if (mouseWorldRectangle.Intersects(TouchHitbox) &&
+                gameState.GameHUD.Intersects(mouseScreenRectangle).Equals(false))
             {
                 gameState.CurrentlyHoveredTile = this;
                 IsHovered = true;
 
-                switch(currentMouse.LeftButton)
+                switch (currentMouse.LeftButton)
                 {
                     case ButtonState.Pressed when PreviousMouseState.LeftButton == ButtonState.Pressed:
-                        if(!(gameState.CurrentlyPressedTile.Equals(this)))
+                        if (!(gameState.CurrentlyPressedTile.Equals(this)))
                         {
                             Pressing?.Invoke(this, new EventArgs());
                         }
@@ -99,7 +99,8 @@ namespace build_and_expand.Objects
                         break;
                 }
 
-                if(currentMouse.LeftButton == ButtonState.Released && PreviousMouseState.LeftButton == ButtonState.Pressed)
+                if (currentMouse.LeftButton == ButtonState.Released &&
+                    PreviousMouseState.LeftButton == ButtonState.Pressed)
                 {
                     RightClick?.Invoke(this, new EventArgs());
                 }
@@ -109,10 +110,10 @@ namespace build_and_expand.Objects
                 IsHovered = false;
             }
 
-            if(DestructionFX != null)
+            if (DestructionFX != null)
             {
                 // if destroing animation finished
-                if(DestructionFX.Finished)
+                if (DestructionFX.Finished)
                 {
                     ObjectDestroyed = false;
                 }
@@ -125,7 +126,7 @@ namespace build_and_expand.Objects
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             // set draw color to orange red if hovered by mouse, otherwise draw normal color
-            if(IsHovered)
+            if (IsHovered)
             {
                 DrawColor = Color.OrangeRed;
             }
@@ -134,40 +135,42 @@ namespace build_and_expand.Objects
                 DrawColor = Color.White;
             }
 
-            if(Object.ObjectId == 1000)
+            if (Object.ObjectId == 1000)
             {
                 Texture = Content.GetTileTexture(1);
                 spriteBatch.Draw(Texture, destinationRectangle:
-                                            new Rectangle(new Point(Position.X, Position.Y),
-                                            C.TILETEXTURESIZE), color: DrawColor);
+                    new Rectangle(new Point(Position.X, Position.Y),
+                        C.TILETEXTURESIZE), color: DrawColor);
                 Texture = Content.GetTileTexture(Object.TerrainId);
                 spriteBatch.Draw(Texture, destinationRectangle:
-                                            new Rectangle(new Point(Position.X, Position.Y),
-                                            C.TILETEXTURESIZE), color: DrawColor);
+                    new Rectangle(new Point(Position.X, Position.Y),
+                        C.TILETEXTURESIZE), color: DrawColor);
             }
             else
             {
-                if(Object.ObjectId > 1)
+                if (Object.ObjectId > 1)
                 {
                     // draw base texture
                     Texture = Content.GetTileTexture(Object.TerrainId);
                     spriteBatch.Draw(Texture, destinationRectangle:
-                                                new Rectangle(new Point(Position.X, Position.Y),
-                                                C.TILETEXTURESIZE), color: DrawColor);
+                        new Rectangle(new Point(Position.X, Position.Y),
+                            C.TILETEXTURESIZE), color: DrawColor);
                 }
+
                 Texture = Content.GetTileTexture(Object.ObjectId);
                 spriteBatch.Draw(Texture, destinationRectangle:
-                                             new Rectangle(new Point(Position.X, Position.Y),
-                                             C.TILETEXTURESIZE), color: DrawColor);
+                    new Rectangle(new Point(Position.X, Position.Y),
+                        C.TILETEXTURESIZE), color: DrawColor);
             }
+
             // draw animation
-            if(HasAnimatedTexture)
+            if (HasAnimatedTexture)
             {
                 AnimTexture.Draw(gameTime, spriteBatch);
             }
 
             // draw destruction fx
-            if(ObjectDestroyed.Equals(true))
+            if (ObjectDestroyed.Equals(true))
             {
                 Object = new TileObject();
                 DestructionFX.Draw(gameTime, spriteBatch);

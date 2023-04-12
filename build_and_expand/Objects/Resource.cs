@@ -6,7 +6,7 @@ namespace build_and_expand.Objects
     public class Resource : TileObject
     {
         public Resource(List<float> settings, List<int> costs,
-                        List<int> cycleOutputs, List<int> staticOutputs)
+            List<int> cycleOutputs, List<int> staticOutputs)
         {
             // set tileobject properties
             ObjectId = (int)settings[0];
@@ -59,6 +59,7 @@ namespace build_and_expand.Objects
                 ObjectId = 3
             };
         }
+
         public void Update(GameTime gameTime)
         {
         }
